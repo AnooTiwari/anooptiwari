@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="androidCheckBox" type="id" />
+    <item name="javaCheckBox" type="id" />
+    <item name="pythonCheckBox" type="id" />
+    <item name="phpCheckBox" type="id" />
+    <item name="unityCheckBox" type="id" />
+</resources>

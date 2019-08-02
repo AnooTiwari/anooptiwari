@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ShowHideImageView-Android-Examples.com</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="click_here_to_show_imageview_image">Click here to Show imageView image</string>
+    <string name="todo">TODO</string>
+
+</resources>

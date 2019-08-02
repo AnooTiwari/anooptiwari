@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/fl1"
+    android:background="@drawable/background_fl">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+       android:background="@color/toplayer"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sun Rise in East"
+        android:textColor="@color/toplayer"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:textSize="50sp" />
+    <TextView
+        android:layout_gravity="bottom"
+        android:layout_width="250dp"
+        android:text="24/12/1994"
+        android:textColor="@color/Text_Color"
+        android:textSize="45sp"
+        android:layout_marginLeft="170dp"
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>

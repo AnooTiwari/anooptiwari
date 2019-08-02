@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/backgroudn">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background__" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:id="@+id/tv1"
+            android:textStyle="bold"
+            android:textColor="@color/uname"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:hint="UserName"
+            android:textStyle="bold"
+            android:textColorHint="@color/uname"
+            android:textColor="@color/uname"
+            android:id="@+id/username"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:hint="password"
+            android:textColorHint="@color/uname"
+            android:textColor="@color/pass"
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+        <Button
+            android:layout_width="0dp"
+            android:padding=".1dp"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_weight=".4"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:background="#3f76ff"
+            android:textColor="#fff"
+            android:id="@+id/login"/>
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight=".4"
+            android:layout_height="wrap_content"
+            android:text="Change "
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:background="#3f76ff"
+            android:textColor="#fff"
+            android:id="@+id/move"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
+

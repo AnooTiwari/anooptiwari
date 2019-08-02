@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/view1"
+        android:background="@color/view" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1"
+        android:id="@+id/L1"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:background="@color/background_for_layout_2"
+        android:layout_width="wrap_content"
+
+        android:id="@+id/L2"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioGroup
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        <RadioButton
+            android:layout_below="@+id/view1"
+            android:text="DELL"
+            android:textColor="@color/bt_color"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:padding="9dp"
+            android:id="@+id/RB1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:layout_below="@+id/RB1"
+            android:text="LENEVO"
+            android:textColor="@color/bt_color"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:padding="9dp"
+            android:id="@+id/RB2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_below="@+id/RB2"
+            android:text="SAMSUNG"
+            android:textColor="@color/bt_color"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:padding="9dp"
+            android:id="@+id/RB3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_below="@+id/RB3"
+            android:text="Accer"
+            android:textStyle="bold"
+            android:textColor="@color/bt_color"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:padding="9dp"
+            android:id="@+id/RB4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </RadioGroup>
+
+            </LinearLayout>
+            <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_hint_color"
+            android:id="@+id/tv1"
+            android:textStyle="bold"
+            android:hint="@string/text_view_hint"
+            android:gravity="center"
+            android:textColorHint="@color/text_hint_color"
+            android:textSize="20sp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/b1"/>
+    </LinearLayout>
+
+         <Button
+        android:layout_below="@+id/L1"
+        android:padding="15dp"
+             android:background="@drawable/click"
+        android:layout_width="match_parent"
+        android:id="@+id/b1"
+        android:layout_height="wrap_content"
+         />
+
+
+
+</RelativeLayout>

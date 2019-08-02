@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CheckBoxExample</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="product1">product__1</string>
+    <string name="product2">product__2</string>
+    <string name="product3">product__3</string>
+    <string name="product4" >product__4</string>
+    <string name="product5">product__5</string>
+</resources>

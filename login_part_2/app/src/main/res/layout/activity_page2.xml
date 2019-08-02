@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".page2"
+    android:background="@color/backgroudn">
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:padding="5dp"
+        android:id="@+id/img1"/>
+    <TextView
+        android:layout_below="@+id/img1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Congrats Succefully login"
+        android:textColor="@color/cong"
+        android:id="@+id/tv1"
+        android:textSize="30sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        android:id="@+id/tv2"
+        android:gravity="center_horizontal"
+        android:textColor="#000"
+        android:textSize="40sp"
+        android:hint=" username"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv2"
+        android:id="@+id/tv3"
+        android:gravity="center_horizontal"
+        android:textColor="#000"
+        android:textSize="40sp"
+        android:hint="Pass"
+        />
+
+
+</RelativeLayout>
