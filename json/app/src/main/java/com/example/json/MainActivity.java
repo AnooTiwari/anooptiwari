@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = MainActivity.class.getSimpleName();                        //?
 
     private ProgressDialog pDialog;
     private ListView lv;
@@ -29,49 +29,49 @@ public class MainActivity extends AppCompatActivity {
     // URL to get contacts JSON
     private static String url = "https://api.myjson.com/bins/x57t9";
 
-    ArrayList<HashMap<String, String>> contactList;
+    ArrayList<HashMap<String, String>> contactList;                     //8 ?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        contactList = new ArrayList<>();
+        contactList = new ArrayList<>();                                //9
 
         lv = (ListView) findViewById(R.id.list);
 
-        new GetContacts().execute();
+        new GetContacts().execute();                            //10?
     }
 
 
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetContacts extends AsyncTask<Void, Void, Void> {             //11
 
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute() {                         //12
             super.onPreExecute();
 
-            pDialog = new ProgressDialog(MainActivity.this);
+            pDialog = new ProgressDialog(MainActivity.this);                //13
             pDialog.setMessage("Please wait...");
-            pDialog.setCancelable(false);
+            pDialog.setCancelable(false);                           //14
            // pDialog.show();
 
         }
 
         @Override
         protected Void doInBackground(Void... arg0) {
-            HttpHandler sh = new HttpHandler();
+            HttpHandler sh = new HttpHandler();                 //15
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall(url);
+            String jsonStr = sh.makeServiceCall(url);           //16  17->http file
 
-            Log.e(TAG, "Response from url: " + jsonStr);
+            Log.e(TAG, "Response from url: " + jsonStr);        //21
 
             if (jsonStr != null) {
                 try {
-                    JSONObject jsonObj = new JSONObject(jsonStr);
+                    JSONObject jsonObj = new JSONObject(jsonStr);           //22
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("contacts");
+                    JSONArray contacts = jsonObj.getJSONArray("contacts");      //23
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {

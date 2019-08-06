@@ -26,8 +26,8 @@ public class HttpHandler {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             // read the response
-            InputStream in = new BufferedInputStream(conn.getInputStream());
-            response = convertStreamToString(in);
+            InputStream in = new BufferedInputStream(conn.getInputStream());        //17
+            response = convertStreamToString(in);                                   //18
         } catch (MalformedURLException e) {
             Log.e(TAG, "MalformedURLException: " + e.getMessage());
         } catch (ProtocolException e) {
@@ -47,7 +47,7 @@ public class HttpHandler {
         String line;
         try {
             while ((line = reader.readLine()) != null) {
-                sb.append(line).append('\n');
+                sb.append(line).append('\n');                           //19       ?
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,6 +58,6 @@ public class HttpHandler {
                 e.printStackTrace();
             }
         }
-        return sb.toString();
+        return sb.toString();                               // 20 return full string with newline cherecter
     }
 }
