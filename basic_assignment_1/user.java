@@ -41,15 +41,15 @@
           {
             list.add(new Data(id[i], name[i],phone[i]));
           }
-          System.out.println(list);
+          printValues(list);
       }
 
-      // public void printValues(ArrayList<Data> list)
-      // {
-      //   for (int i = 0; i < n; i++)
-      //     {
-      //       Data data = list.get(i);
-      //         System.out.println(data.id+" "+data.name+" "+data.phone);
-      //     }
-      // }
+      public void printValues(ArrayList<Data> list)
+      {
+        for (int i = 0; i < n; i++)
+          {
+            Data data = list.get(i);
+              System.out.println(data.id+" "+data.name+" "+data.phone);
+          }
+      }
   }
