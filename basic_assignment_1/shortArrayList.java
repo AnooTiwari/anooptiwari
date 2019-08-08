@@ -18,7 +18,7 @@ break;
 
 System.out.println("Normal list   "+al);
 Collections.sort(al);
-System.out.println("Shorted list "+al);
+System.out.println("Sorted list "+al);
  Collections.reverse(al);
  System.out.println("Sort ArrayList of Strings in descending order\ns"+al);
 
