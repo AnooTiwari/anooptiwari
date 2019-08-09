@@ -1,24 +1,23 @@
-import java.util.*;
-class String_split
-{
-  public static void main(String[] args){
-    int a;
-    String s,b,c,d,temp;
-    List<String> al=new ArrayList<String>();
-    /*Scanner sc = new Scanner(System.in);
-    s=sc.nextLine();*/
-    s="23 Hello world ABCDEFGH";
-    String str[] = s.split(" ");
-    al=Arrays.asList(str);
-    Iterator<String> iter = al.iterator();
-    while (iter.hasNext()) {
-      a=Integer.parseInt(iter.next()) ;
-      System.out.print("a=  "+(a+1)+"\n");
-      b=iter.next();
-      c=iter.next();
-      d=iter.next();
-      System.out.println("b = "+b+"\nc = "+c+"\nd = "+d);
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
-    }
+public class String_split {
+    public static void main(String a[]){
+        int b;
+          String c,d,temp;
+        Scanner scanner = new Scanner(System.in);
+        String s = "23 Hello world ABCDEFGH";
+        String k = scanner.nextLine();
+        String delims = " ";
+        StringTokenizer st = new StringTokenizer(k, delims);
+        System.out.println("No of Token = " + st.countTokens());
+        while (st.hasMoreTokens()) {
+            //System.out.println(st.nextToken());
+            b=Integer.parseInt(st.nextToken());
+            c= st.nextToken();
+            d= st.nextToken();
+            temp= st.nextToken();
+            System.out.println((b+1)+" "+c+" "+d+" "+temp);
 
-  }
+        }
+    }}
