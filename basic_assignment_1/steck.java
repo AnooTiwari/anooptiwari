@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+//with static function
 
 class steck
 {

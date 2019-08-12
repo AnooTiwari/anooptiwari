@@ -36,8 +36,7 @@ class User{
     Iterator itr=list.iterator();
     while(itr.hasNext()){
     employee st=(employee)itr.next();
-    ageSort.add(ageSort.sort(st.age));
-  //  System.out.println(st.ID+" "+st.name+" "+st.salary+" "+st.age+" "+st.phone+" "+st.email);
+      System.out.println(st.ID+" "+st.name+" "+st.salary+" "+st.age+" "+st.phone+" "+st.email);
     }
     System.out.println(ageSort);
     }
