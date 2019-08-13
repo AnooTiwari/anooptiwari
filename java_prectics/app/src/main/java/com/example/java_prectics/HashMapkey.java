@@ -1,29 +1,53 @@
 package com.example.java_prectics;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class HashMapkey {
-    public static void main(String args[])
+class Employeee{
+    public int id;
+    public String name;
+    public String city;
+    public static int count = 0;
+
+    //zero argument constructor. Gets called by default when an object is created for the Employee class
+    public Employeee(){}
+
+    //Parameterized Constructor
+    public Employeee(int id, String name,String city)
     {
-        HashMap<Emp,Emp> map = new HashMap<>();
+        super();
+        this.id = id;
+        this.name = name;
+        this.city=city;
+        count++;
+    }
 
-        Emp emp1= new Emp(101,"Anoop",28);
-        Emp emp2= new Emp(101,"Anoop",52);
-        Emp emp3= new Emp(103,"C",25);
-        Emp emp4= new Emp(104,"D",24);
-        Emp emp5= new Emp(105,"E",35);
-        map.put(emp1,emp1);
-        map.put(emp2,emp2);
-        map.put(emp3,emp3);
-        map.put(emp4,emp4);
-        map.put(emp5,emp5);
+    public int getId() {
+        return id;
+    }
 
-        for(Map.Entry<Emp,Emp> entry:map.entrySet()){
-            System.out.println(entry.getKey()+"         "+entry.getValue());
+    public String getName() {
+        return name;
+    }
 
-
-        }
-
+    public String getAddress() {
+        return city;
     }
 }
+
+public class DisplayArrayList {
+    public static void main(String[] args) throws Exception
+    {
+        List<Employee> list = new ArrayList<Employee>();
+
+        list.add(new Employee(1, "Ravi","Delhi"));
+        list.add(new Employee(2, "Raj","Mumbai"));
+        list.add(new Employee(3, "Rekha","Chennai"));
+        list.add(new Employee(4, "Ram","Siliguri"));
+
+        for (Employee s : list) //Iterates as long as there are elements in the list. An object s is created of type Employee class.
+        {
+            System.out.print("ID, Name and City of the employee are : ");
+            System.out.println(s.getId()+" "+s.getName()+" " +s.getAddress());
+        }
+    }//End of main() method
+}//end of DisplayArrayList class
