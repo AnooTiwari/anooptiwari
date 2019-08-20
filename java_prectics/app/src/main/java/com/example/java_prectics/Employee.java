@@ -48,6 +48,7 @@ public class Employee implements Comparable<Employee>{
         }
 
     };
+    private Object dateOfBirth;
 
     public Employee(int id, String name, int salary, int age, Date dateOfJoining) {
         this.id = id;
