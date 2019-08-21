@@ -13,8 +13,7 @@ class Employee
   private String Department;
   private String Salary;
 
-  public Employee(String Id, String Name, String Department,
-  String Salary)
+  public Employee(String Id, String Name, String Department,String Salary)
   {
     this.Id=Id;
     this.Name=Name;

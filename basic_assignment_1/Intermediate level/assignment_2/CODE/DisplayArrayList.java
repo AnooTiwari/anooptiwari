@@ -130,7 +130,21 @@ public class DisplayArrayList implements Comparator<Employee> {
         case 2:
         // System.out.println("Enter the mobile number ");
         // data = sc.nextLine();
-        map.values();
+        // Set setofKeys = map.keySet();
+        // Iterator itr = setofKeys.iterator();
+        // while(itr.hasNext())
+        // {
+        //     String key = (String) itr.next();
+        //     ArrayList<String> value = map.get();
+        //     System.out.println("\nResult :"+value);
+        // }
+/****
+  Iterator it = map.entrySet().iterator();
+  while (it.hasNext()) {
+  Map.Entry pairs = (Map.Entry)it.next();
+  System.out.println(pairs.getKey() + " = " + pairs.getValue());
+}*/
+        // map.forEach((k, v) -> System.out.println(k + "=" + v));
 
         // for (Employee s : list)
         // {
