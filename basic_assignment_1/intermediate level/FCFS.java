@@ -25,24 +25,18 @@ public class FCFS{
     int wt[] = new int[n], tat[] = new int[n];
     WT(processes, n, bt, wt, at);
     TT(processes, n, bt, wt, tat);
-    System.out.print("Processes " + " Burst Time " + " Arrival Time "
-    + " Waiting Time " + " Turn-Around Time "
-    + " Completion Time \n");
+    System.out.print("Processes " + " Burst Time " + " Arrival Time "+ " Waiting Time " + " Turn-Around Time " + " Completion Time \n");
     int total_wt = 0, total_tat = 0;
     for (int i = 0 ; i < n ; i++)
     {
       total_wt = total_wt + wt[i];
       total_tat = total_tat + tat[i];
       int compl_time = tat[i] + at[i];
-      System.out.println(i+1 + "\t\t" + bt[i] + "\t\t"
-      + at[i] + "\t\t" + wt[i] + "\t\t "
-      + tat[i] + "\t\t " + compl_time);
+      System.out.println(i+1 + "\t\t" + bt[i] + "\t\t"+ at[i] + "\t\t" + wt[i] + "\t\t "+ tat[i] + "\t\t " + compl_time);
     }
 
-    System.out.print("Average waiting time = "
-    + (float)total_wt / (float)n);
-    System.out.print("\nAverage turn around time = "
-    + (float)total_tat / (float)n+"\n\n");
+    System.out.print("Average waiting time = "+ (float)total_wt / (float)n);
+    System.out.print("\nAverage turn around time = "+ (float)total_tat / (float)n+"\n\n");
   }
   public static void main(String args[]) {
     int processes[] = {1, 2, 3,4,5,6};
@@ -50,6 +44,6 @@ public class FCFS{
     int bt[] = {10, 210, 70,70,90,50};
     int arrival_time[] = {0, 110, 110,130,130,100};
 
-   AT(processes, n, bt, arrival_time);
+    AT(processes, n, bt, arrival_time);
   }
 }
