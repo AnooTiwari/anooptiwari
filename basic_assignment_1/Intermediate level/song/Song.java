@@ -39,10 +39,7 @@
       public String getYear() {
         return year;
       }
-        // public float compare(Song o1, Song o2) {
-        //
-        //   return o1.getDuration()-o2.getDuration();
-        // }
+        
     }                                                   /*Class end */
     public class Song  {
       public static void main(String[] args)
@@ -50,63 +47,47 @@
         int i,size,choice;
         String Title,Artist,Year,Album,Duration;
         Scanner sc = new Scanner(System.in);
-        Map< String, List<Integer> > mapTitle=new HashMap<>();
-        Map< String, List<Integer>  > mapArtist=new HashMap<>();
-        Map< String, List<Integer>  > mapAlbum=new HashMap< >();
+        Map< String, List<Integer>> mapTitle=new HashMap<>();
+        Map< String, List<Integer>> mapArtist=new HashMap<>();
+        Map< String, List<Integer>> mapAlbum=new HashMap< >();
         List<Song_lib> list = new ArrayList<Song_lib>();
-          
-        /*Test input Start*/
+        List<Integer> updateSearchResult= new ArrayList();
 
-        Title="Spno ki rani";
-        Artist="Kishore Kumar";
-        Year="1969";
-        Duration="5.0";
-        Album="Aradhana";
+        /*Test input Start*/
         Song_lib song=new Song_lib();
-        song.setDuration(Duration);
-        song.setTitle(Title);
-        song.setYear(Year);
-        song.setAlbum(Album);
-        song.setArtist(Artist);
+        song.setDuration("5.0");
+        song.setTitle("Spno ki rani");
+        song.setYear("1969");
+        song.setAlbum("Aradhana");
+        song.setArtist("Kishore Kumar");
         list.add(song);
-        mapTitle.put(Title,Arrays.asList(new Integer[] {0}));
-        mapAlbum.put(Album,Arrays.asList(new Integer[] {0}));
-        mapArtist.put(Artist,Arrays.asList(new Integer[] {0}));
+        mapTitle.put("Spno ki rani",Arrays.asList(new Integer[] {0}));
+        mapAlbum.put("Aradhana",Arrays.asList(new Integer[] {0}));
+        mapArtist.put("Kishore Kumar",Arrays.asList(new Integer[] {0}));
         /*Input 2*/
-        Title="Mere Mhbub";
-        Artist="Kishore Kumar";
-        Year="1956";
-        Duration="3.0";
-        Album="Shore";
         Song_lib song1=new Song_lib();
-        song1.setTitle(Title);
-        song1.setAlbum(Album);
-        song1.setArtist(Artist);
-        song1.setDuration(Duration);
-        song1.setYear(Year); 
+        song1.setTitle("Mere Mhbub");
+        song1.setAlbum("Shore");
+        song1.setArtist("Kishore Kumar");
+        song1.setDuration("3.0");
+        song1.setYear("1956"); 
         list.add(song1);
         mapTitle.put("Mere Mhbub",Arrays.asList(new Integer[] {1}));
         mapArtist.put("Kishore Kumar",Arrays.asList(new Integer[] {0,1}));
         mapAlbum.put("Shore",Arrays.asList(new Integer[] {1}));
         /*Input 3*/
-        Title="Mere dill ";
-        Artist="Mukesh";
-        Year="1976";
-        Duration="4.0";
-        Album="Kbhi";
         Song_lib song2=new Song_lib();
-        song2.setTitle(Title);
-        song2.setAlbum(Album);
-        song2.setArtist(Artist);
-        song2.setDuration(Duration);
-        song2.setYear(Year); 
+        song2.setTitle("Mere dill");
+        song2.setAlbum("Kbhi");
+        song2.setArtist("Mukesh");
+        song2.setDuration("4.7");
+        song2.setYear("1976"); 
         list.add(song2);
         mapTitle.put("Mere dill",Arrays.asList(new Integer[] {2}));
         mapArtist.put("Mukesh",Arrays.asList(new Integer[] {2}));
         mapAlbum.put("Kbhi",Arrays.asList(new Integer[] {2}));
-
+       
         /*Test input end*/
-
         for (Song_lib s : list)
         {
           System.out.println("\n\n"+s.getTitle() +" " +s.getAlbum() +" " +s.getYear() +" " +s.getArtist() +" " +s.getDuration() );
@@ -146,235 +127,191 @@
               break;
             }
             case 4:
-            {
-              String Update_decision,Title1,Album1,Choice_title,update_search,Artist1;
-              List<Integer> update_search_result= new ArrayList();
+             String choiceTitle,titleSearch,newTitle;
               System.out.println("\033[H\033[2J");
               System.out.println("\t\t\t\t\t****Edit Menu****");
               System.out.println("\n\tPress T Title of songs\tPress A for Edit Albums\tPress N names of Artists ");
-              Choice_title=sc.next();
-                //if( Choice_title.equalsIgnoreCase("T")|| Choice_title.equalsIgnoreCase("t"))
-              if(Choice_title.equalsIgnoreCase("T"))
+              choiceTitle=sc.next();
+              if(choiceTitle.equalsIgnoreCase("T"))
               {
                 System.out.println("\033[H\033[2J");
                 System.out.println("\t\t\t\t\t**** Title Edit Menu****");
                 System.out.println("Enter the Title ");
                 sc.nextLine();
-                update_search = sc.nextLine();
-                System.out.println(mapTitle.get(update_search));
-                update_search_result=mapTitle.get(update_search);
-                System.out.println("update_search_result"+update_search_result);
-                for(i=0;i<=update_search_result.size();i++){
-                  Song_lib song_obj_title=(Song_lib)list.get(i);
-                  if(song_obj_title.getTitle().equals(update_search)){
+                titleSearch = sc.nextLine();
+                updateSearchResult=mapTitle.get(titleSearch);/*Rerun the index value of related title*/
+                 for (Integer s : updateSearchResult)
+                 {
+                  Song_lib songObjTitle=list.get(s);
                     System.out.println("\t\t\t\t\t\t\tYour Search Result");
                     System.out.println("\n\n\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
-                    System.out.println("\t"+song_obj_title.getTitle()+"\t\t" +song_obj_title.getAlbum()+"\t\t" +song_obj_title.getYear()+"\t\t" +song_obj_title.getArtist()+"\t" +song_obj_title.getDuration());
-                    System.out.println("\t\t\t\tPress Y  for Confirm and Update\tPress N for Cancel");
-                    Update_decision=sc.next();
-                    sc.nextLine();
-                    if(Update_decision.equalsIgnoreCase("Y"));
-                    {
-                      System.out.println("Enter the New Title ");
-                      Title1=sc.nextLine();
-                      song_obj_title.setTitle(Title1);
-                      System.out.println("\t\t\t\tUpdated Result is :\n");
-                    mapTitle.put(Title1,Arrays.asList(new Integer[] {i}));  //Map update
+                    System.out.println("\t"+songObjTitle.getTitle()+"\t\t" +songObjTitle.getAlbum()+"\t\t" +songObjTitle.getYear()+"\t\t" +songObjTitle.getArtist()+"\t" +songObjTitle.getDuration());
+                    System.out.println("Enter the New Title ");
+                    newTitle=sc.nextLine();
+                    songObjTitle.setTitle(newTitle);
+                    System.out.println("\t\t\t\tUpdated Result is :\n");
+                    mapTitle.remove(titleSearch);
+                    mapTitle.put(newTitle,updateSearchResult);  //Map update
                     System.out.println("\n\n\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
-                    System.out.println("\t"+song_obj_title.getTitle()+"\t\t" +song_obj_title.getAlbum()+"\t\t" +song_obj_title.getYear()+"\t\t" +song_obj_title.getArtist()+"\t" +song_obj_title.getDuration());
+                    System.out.println("\t"+songObjTitle.getTitle()+"\t\t" +songObjTitle.getAlbum()+"\t\t" +songObjTitle.getYear()+"\t\t" +songObjTitle.getArtist()+"\t" +songObjTitle.getDuration());
                   }
                 }
-              }
-            } 
-            else if(Choice_title.equalsIgnoreCase("A"))
-
-            {
+              else if(choiceTitle.equalsIgnoreCase("A"))
+              {
+              String searchAlbum,newAlbum;
               System.out.println("\033[H\033[2J");
               System.out.println("\t\t\t\t\t**** Album Edit Menu****");
               System.out.println("Enter the old Album name ");
-              update_search=sc.next();
               sc.nextLine();
-              System.out.println(mapAlbum.get(update_search));
-              update_search_result =mapAlbum.get(update_search);
-              System.out.println("update_search_result"+update_search_result+" update_search_result.size() "+update_search_result.size());
-              for(i=0;i<=(update_search_result.size()+1);i++){
-                Song_lib song_obj_album=(Song_lib)list.get(i);
-                if(song_obj_album.getAlbum().equals(update_search)){
-                  System.out.println("\t\t\t\t\t\t\tYour Search Result");
-                  System.out.println("\n\n\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
-                  System.out.println("\t"+song_obj_album.getTitle()+"\t\t" +song_obj_album.getAlbum()+"\t\t" +song_obj_album.getYear()+"\t\t" +song_obj_album.getArtist()+"\t" +song_obj_album.getDuration());
-                  System.out.println("\t\t\t\t\t\t\tPress Y for Confirm and Update\tPress N for Cancel");
-                  Update_decision=sc.nextLine();
-                  if(Update_decision.equalsIgnoreCase("Y"))
-                  {
-                    System.out.println("Enter the new Album Name ");
-                    Album1=sc.nextLine();
-                    song_obj_album .setAlbum(Album1);
-                    mapAlbum.put(Album1,Arrays.asList(new Integer[] {i}));
-                  }
-                }
-              }
+              searchAlbum=sc.nextLine();
+              updateSearchResult=mapAlbum.get(searchAlbum);
+              for (Integer s : updateSearchResult)
+               {
+                Song_lib songObjAlbum=list.get(s);
+                System.out.println("\t\t\t\t\t\t\tYour Search Result");
+                System.out.println("\n\n\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
+                System.out.println("\t"+songObjAlbum.getTitle()+"\t\t" +songObjAlbum.getAlbum()+"\t\t" +songObjAlbum.getYear()+"\t\t" +songObjAlbum.getArtist()+"\t" +songObjAlbum.getDuration());                   
+                System.out.println("Enter the new Album Name");
+                newAlbum=sc.nextLine();
+                songObjAlbum .setAlbum(newAlbum);
+                mapAlbum.remove(searchAlbum);
+                mapAlbum.put(newAlbum,updateSearchResult);
+               }
             }
-            else if(Choice_title.equalsIgnoreCase("N"))
+            else if(choiceTitle.equalsIgnoreCase("N"))
             {
+              String searchArtist,newArtistName;
               System.out.println("\033[H\033[2J");
               System.out.println("\t\t\t\t\t**** Artist Name  Edit Menu****");
               sc.nextLine();
               System.out.println("Enter the old Artist Name ");
-              update_search=sc.nextLine();
-              System.out.println(mapArtist.get(update_search));
-              update_search_result =mapArtist.get(update_search);
-              System.out.println("update_search_result"+update_search_result+" update_search_result.size() "+update_search_result.size());
-              for(i=0;i<=(update_search_result.size());i++){
-                Song_lib song_obj_name=(Song_lib)list.get(i);
-                if(song_obj_name.getArtist().equals(update_search)){
+              searchArtist=sc.nextLine();
+              updateSearchResult =mapArtist.get(searchArtist);
+              System.out.println("Enter the  New Aritst Name ");
+              newArtistName=sc.nextLine();
+              for (Integer s : updateSearchResult)
+               {
+                  Song_lib songObjName=list.get(s);
                   System.out.println("\t\t\t\t\t\t\tYour Search Result");
-                  System.out.println("\n\n\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
-                  System.out.println("\t"+song_obj_name.getTitle()+"\t\t" +song_obj_name.getAlbum()+"\t\t" +song_obj_name.getYear()+"\t\t" +song_obj_name.getArtist()+"\t" +song_obj_name.getDuration());
-                  System.out.println("\t\t\t\t\t\t\tPress Y for Confirm and Update\tPress N for Cancel");
-                  Update_decision=sc.nextLine();
-                  if(Update_decision.equalsIgnoreCase("Y"))
-                  {
-                    System.out.println("Enter the  New Aritst Name ");
-                    Artist1=sc.nextLine();
-                    song_obj_name .setArtist(Artist1);
-                    mapArtist.put(Artist1,Arrays.asList(new Integer[] {i}));
+                  System.out.println("\t"+songObjName.getTitle()+"\t\t" +songObjName.getAlbum()+"\t\t" +songObjName.getYear()+"\t\t" +songObjName.getArtist()+"\t" +songObjName.getDuration());
+                  songObjName .setArtist(newArtistName);
+                  mapArtist.remove(searchArtist);
+                  mapArtist.put(newArtistName,updateSearchResult);
                   }
-                }}}else
-                {
+            }
+            else
+            {
                   System.out.println("\033[H\033[2J");
                   System.out.println("****************************************\tPlease Give Correct Input\t****************************************\n\n\n\n\n");
-                }
-              }
+            }
               break;
-              case 5:
-            {                                                               //View a list of all the songs by a particular artist.
-              String Artist_search;
-              List<Integer> update_search_result= new ArrayList();
-              System.out.println("Enter the  Artist Name ");
-              Artist_search=sc.nextLine();
-              System.out.println("\033[H\033[2J");
-              System.out.println("\t\t\t\t\t****list of all the songs by a "+Artist_search+" is ****");
-              update_search_result =mapArtist.get(Artist_search);
-              Object[] objects = update_search_result.toArray(); 
-              for (Object obj : objects) {
-                Song_lib list_of_song=(Song_lib)list.get((int)obj);
-                System.out.println(list_of_song.getTitle());
-              } }
-              break;
-              case 6:                                                                   /*View a list of all the songs on a particular album.*/
-              {
-                String Album_search;
-                List<Integer> update_search_result= new ArrayList();
-                System.out.println("Enter the Name of Album ");
-                Album_search =sc.nextLine();
-                System.out.println("\033[H\033[2J");
-                System.out.println("\t\t\t\t\t****list of all the songs in Album : "+Album_search+" ****");
-                update_search_result =mapAlbum.get(Album_search);
-                System.out.println("update_search_result"+update_search_result+" update_search_result.size() "+update_search_result.size());
-                Object[] objects = update_search_result.toArray(); 
-                for (Object obj : objects) {
-                  Song_lib list_of_album=(Song_lib)list.get((int)obj);
-                  System.out.println(list_of_album.getTitle());
-                }
 
+              case 5://View a list of all the songs by a particular artist.
+            {                       
+              String artistSearch;
+              System.out.println("Enter the  Artist Name ");
+              artistSearch=sc.nextLine();
+              System.out.println("\033[H\033[2J");
+              System.out.println("\t\t\t\t\t****list of all the songs by a :"+artistSearch+" ****");
+              updateSearchResult =mapArtist.get(artistSearch);
+              for (Integer s : updateSearchResult)
+              {
+                Song_lib listofSong=list.get(s);
+                System.out.println(listofSong.getTitle());
               }
+            }
               break;
+              case 6: /*View a list of all the songs on a particular album.*/
+                String albumSearch;
+                System.out.println("Enter the Name of Album ");
+                albumSearch =sc.nextLine();
+                System.out.println("\033[H\033[2J");
+                System.out.println("\t\t\t\t\t****list of all the songs in Album : "+albumSearch+" ****");
+                updateSearchResult =mapAlbum.get(albumSearch);
+                for (Integer s : updateSearchResult)
+                {
+                Song_lib listofAlbum=list.get(s);              
+                System.out.println(listofAlbum.getTitle());
+                }
+                break;
               case 7:         /*Add songs to and remove them from the library.*/
               {
-                List<Integer> update_search_result,find_index_value= new ArrayList();
-                String Choice_song;
+                String choiceSong;
                 System.out.println("\033[H\033[2J");
                 System.out.println("Press A for Add song\tPress R for Remove Song");
-                Choice_song=sc.next();
+                choiceSong=sc.next();
                 sc.nextLine();
-                if(Choice_song.equalsIgnoreCase("A"))
+                if(choiceSong.equalsIgnoreCase("A"))
                 {
+                  String newAddTitle,newArtist,newAlbum,newYear,newDuration;
                   System.out.println("\033[H\033[2J");
                   System.out.println("\t\t\t\t\t**** New Song Addition Menu****");
                   System.out.println("Enter the Title ");
-                  Title=sc.nextLine();
-                  System.out.println("Enter the Album ");
-                  Album=sc.nextLine();
-                  System.out.println("Enter the Year ");
-                  Year=sc.nextLine();
-                  System.out.println("Enter the Artist ");
-                  Artist=sc.nextLine();
-                  System.out.println("Enter the Duration ");
-                  Duration=sc.nextLine();
-                  if(mapTitle.containsKey(Title))
+                  newAddTitle=sc.nextLine();
+                  if(mapTitle.containsKey(newAddTitle))
                   {
                     System.out.println("Song is Already Present Please Remove it first  by using [7 -> R ] option ");
                     break;
                   }else 
                   {
-                    Song_lib song_add=new Song_lib();
-                    song_add.setDuration(Duration);
-                    song_add.setTitle(Title);
-                    song_add.setYear(Year);
-                    song_add.setAlbum(Album);
-                    song_add.setArtist(Artist);
-                    list.add(song_add);
-                    if(mapArtist.containsKey(Artist))
+                    System.out.println("Enter the Artist ");
+                    newArtist=sc.nextLine();
+                    System.out.println("Enter the Album ");
+                    newAlbum=sc.nextLine();
+                    System.out.println("Enter the Year ");
+                    newYear=sc.nextLine();
+                    System.out.println("Enter the Duration ");
+                    newDuration=sc.nextLine();
+                    Song_lib newSongAddObj=new Song_lib();
+                    newSongAddObj.setDuration(newDuration);
+                    newSongAddObj.setTitle(newAddTitle);
+                    newSongAddObj.setYear(newYear);
+                    newSongAddObj.setAlbum(newAlbum);
+                    newSongAddObj.setArtist(newArtist);
+                    list.add(newSongAddObj);
+                    if(mapArtist.containsKey(newArtist))
                     {
                       System.out.println("Artist is Already Present this song will going to add Artist library  ");
-                      update_search_result =mapArtist.get(Artist);
-                      List<Integer> ints = new ArrayList<Integer>();
-                      Object[] objects = update_search_result.toArray(); 
-                      for (Object obj : objects) {
-                       ints.add((int)obj);
-                     }
-                     ints.add(list.indexOf(song_add));
-                     mapArtist.put(Artist,ints);
+                      updateSearchResult =mapArtist.get(newArtist);
+                      List<Integer> newList = new ArrayList<Integer>(updateSearchResult);
+                      newList.add(list.indexOf(newSongAddObj));
+                      mapArtist.put(newArtist,newList);
                    }
-                   if(mapAlbum.containsKey(Album))
+                   if(mapAlbum.containsKey(newAlbum))
                    {
-                    System.out.println("Album is Already Present this song will going to add Album library  ");
-                    update_search_result =mapAlbum.get(Album);
-                    List<Integer> ints = new ArrayList<Integer>();
-                    Object[] objects = update_search_result.toArray(); 
-                    for (Object obj : objects) {
-                     ints.add((int)obj);
-                   }
-                   ints.add(list.indexOf(song_add));
-                   mapAlbum.put(Album,ints);
+                    System.out.println("\nAlbum is Already Present this song will going to add Album library  ");
+                    updateSearchResult =mapAlbum.get(newAlbum);
+                    List<Integer> newList = new ArrayList<Integer>(updateSearchResult);
+                    newList.add(list.indexOf(newSongAddObj));
+                    mapAlbum.put(newAlbum,newList); 
                  }
                }            
-             }else if(Choice_song.equalsIgnoreCase("R"))
+              }
+           else if(choiceSong.equalsIgnoreCase("R"))
              {
-              List<Integer> ints = new ArrayList<Integer>();
-
               System.out.println("\033[H\033[2J");
               System.out.println("\t\t\t\t\t**** Song Deletion Menu****");
-              String Song_delete;
+              String songforDelete;
               System.out.println("Enter the Title of Song for  Delete");
-              Song_delete=sc.nextLine();
-              System.out.println("Entered song is "+Song_delete);
-              update_search_result=mapTitle.get(Song_delete);
-              System.out.println("update_search_result for delete is "+update_search_result+"map is "+mapTitle);
-              System.out.println("Check");
-              Object[] objects = update_search_result.toArray(); 
-              for (Object obj : objects) {
-                Song_lib song_obj_delete=(Song_lib)list.get((int)obj);
-                System.out.println("obj"+obj);
-                System.out.println("\t\t\t\t\t\t\tYour Search Result");
-                System.out.println("\n\n\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
-                System.out.println("\t"+song_obj_delete.getTitle()+"\t\t" +song_obj_delete.getAlbum()+"\t\t" +song_obj_delete.getYear()+"\t\t" +song_obj_delete.getArtist()+"\t" +song_obj_delete.getDuration());
-                int x=list.indexOf(song_obj_delete);
-                list.remove(song_obj_delete);
-                mapTitle.remove(Song_delete); 
-                find_index_value=mapArtist.get(song_obj_delete.getArtist());
-                Object[] object = find_index_value.toArray(); 
-                for (Object obk : object) {
-                 ints.add((int)obk);
-               }
-               ints.remove(x);
-               System.out.println("inst  "+ints);
-               /*object loop close */
-               mapAlbum.put(song_obj_delete.getAlbum(),ints);
-               mapArtist.put(song_obj_delete.getArtist(),ints);
-             }
-           }
+              songforDelete=sc.nextLine();
+              updateSearchResult=mapTitle.get(songforDelete);
+              List<Integer> newList = new ArrayList<Integer>(updateSearchResult);
+              Song_lib songforDeleteObj;
+              for (Integer s : updateSearchResult){
+              songforDeleteObj=list.get(s);   
+              System.out.println("\t"+songforDeleteObj.getTitle()+"\t\t" +songforDeleteObj.getAlbum()+"\t\t" +songforDeleteObj.getYear()+"\t\t" +songforDeleteObj.getArtist()+"\t" +songforDeleteObj.getDuration());
+              int index=list.indexOf(songforDeleteObj);
+              mapTitle.remove(songforDeleteObj.getTitle());
+              updateSearchResult=mapArtist.get(songforDeleteObj.getArtist());
+              List<Integer> newList1 = new ArrayList<Integer>(updateSearchResult);
+              newList1.remove(index);
+              mapArtist.put(songforDeleteObj.getArtist(),newList1);
+              updateSearchResult=mapAlbum.get(songforDeleteObj.getAlbum());
+              List<Integer> newList2 = new ArrayList<Integer>(updateSearchResult);
+              newList2.remove(index);
+              mapAlbum.put(songforDeleteObj.getAlbum(),newList2);                
+              list.remove(songforDeleteObj); 
+             }}            
              else
              {
                System.out.println("\033[H\033[2J");
@@ -383,80 +320,77 @@
            }
            break;
             case 8:/*Add artists to and remove them from songs*/
-            {
+            
               System.out.println("\033[H\033[2J");
               System.out.println("\t\t\t\t\t****  Artists Add and remove Menu****");
-              String  Choice_song,Title_search,  Artist2,newvalue;
-              List<Integer> update_search_result_artist,find_index_value,update_map= new ArrayList();
+              String  choiceSong,newArtistAdd,newvalue,oldValue;
               System.out.println("Press A for Add Artist\tPress R for Remove Artist");
-              Choice_song=sc.next();
+              choiceSong=sc.next();
               sc.nextLine();
-              if(Choice_song.equalsIgnoreCase("A"))
+              if(choiceSong.equalsIgnoreCase("A"))
               {
                 System.out.println("\033[H\033[2J");
                 System.out.println("\t\t\t\t\t**** New Artist Addition Menu****");
                 System.out.println("Enter the title of song  ");
-                Title_search=sc.nextLine();
-                update_search_result_artist =mapTitle.get(Title_search);
-                Object[] objects = update_search_result_artist.toArray(); 
-                for (Object obj : objects) {
-                Song_lib song_obj_Add_artist=(Song_lib)list.get((int)obj);  
-                if(song_obj_Add_artist.getTitle().equals(Title_search)) {             
-                System.out.println("\t\tGiven title :  "+Title_search +" Artist name :  "+song_obj_Add_artist.getArtist());
-                update_map=mapArtist.get(song_obj_Add_artist.getArtist());
-                System.out.println("Enter the New Artist name");
-                Artist2=sc.nextLine();
-                song_obj_Add_artist.setArtist(song_obj_Add_artist.getArtist()+","+Artist2);
-                System.out.println("\n\n\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
-                System.out.println("\t"+song_obj_Add_artist.getTitle()+"\t\t" +song_obj_Add_artist.getAlbum()+"\t\t" +song_obj_Add_artist.getYear()+"\t\t" +song_obj_Add_artist.getArtist()+"\t" +song_obj_Add_artist.getDuration());
-                newvalue=(song_obj_Add_artist.getArtist());
-                mapArtist.put(newvalue,update_map);
+                titleSearch=sc.nextLine();
+                updateSearchResult =mapTitle.get(titleSearch);
+                for (Integer s : updateSearchResult){
+                Song_lib songobjAddartist=list.get(s);  
+                System.out.println("\t\tGiven title :  "+titleSearch +" Artist name :  "+songobjAddartist.getArtist());
+                System.out.println("Enter the Second Artist name");
+                newArtistAdd=sc.nextLine();
+                oldValue=songobjAddartist.getArtist();
+                songobjAddartist.setArtist(songobjAddartist.getArtist()+","+newArtistAdd);
+                newvalue=(songobjAddartist.getArtist());
+                List<Integer> artistIndex = new ArrayList<Integer>(updateSearchResult);
+                mapArtist.remove(oldValue);
+                mapArtist.put(newvalue,artistIndex);
                 System.out.println(mapArtist);
               }
             }
-          }
-              else if(Choice_song.equalsIgnoreCase("R"))
+            else if(choiceSong.equalsIgnoreCase("R"))
               {
-                String temp_artist_name,artist_name_for_delete;
+                String tempArtistName,artistNameforDelete;
                 System.out.println("\033[H\033[2J");
                 System.out.println("\t\t\t\t\t**** Artist Remove Menu****");
                 System.out.println("Enter the title of song  ");
-                Title_search=sc.nextLine();
-                update_search_result_artist =mapTitle.get(Title_search);
-                Object[] objects = update_search_result_artist.toArray(); 
-                for (Object obj : objects) 
-                {
-                Song_lib song_obj_remove_artist=(Song_lib)list.get((int)obj);  
-                if(song_obj_remove_artist.getTitle().equals(Title_search)) { 
-                System.out.println("\t\tGiven title :  "+Title +" Artist name :  "+song_obj_remove_artist.getArtist());
-                temp_artist_name=song_obj_remove_artist.getArtist();
-                song_obj_remove_artist.setArtist(null);
-                mapArtist.remove(song_obj_remove_artist.getArtist());
+                titleSearch=sc.nextLine();
+                updateSearchResult =mapTitle.get(titleSearch);
+                for (Integer s : updateSearchResult){
+                Song_lib songObjRemoveArtist=list.get(s);  
+                System.out.println("\t\tGiven title :  "+titleSearch +" Artist name :  "+songObjRemoveArtist.getArtist());
+                tempArtistName=songObjRemoveArtist.getArtist();
+                updateSearchResult=mapArtist.get(tempArtistName);
+                songObjRemoveArtist.setArtist(null);
+                int index=list.indexOf(songObjRemoveArtist);
+                List<Integer> artistIndex = new ArrayList<Integer>(updateSearchResult);
+                artistIndex.remove(index);
+                mapArtist.remove(songObjRemoveArtist.getArtist());
+                mapArtist.put(tempArtistName,artistIndex);
                 }
               }
-            }
+            
               else
               {
                 System.out.println("\033[H\033[2J");
                 System.out.println("****************************************\tPlease Give Correct Input\t****************************************\n\n\n\n\n");
               }
-            }
+            
             break;
             case 9:/*Add songs to and remove them from albums*/
-            {
-              String  Choice_song,Title_search;
-              List<Integer> update_search_result_artist,find_index_value,update_map,ints = new ArrayList();
+            
+              String  songDuration,songYear,songArtist,songTitle;
               System.out.println("\033[H\033[2J");
               System.out.println("\t\t\t\t\t****  Song Add and remove Menu****");
               System.out.println("Press A for Add Song\tPress R for Remove Song");
-              Choice_song=sc.next();
+              choiceSong=sc.next();
               sc.nextLine();
-              if(Choice_song.equalsIgnoreCase("A"))
+              if(choiceSong.equalsIgnoreCase("A"))
               {
                 
                 System.out.println("Enter the Album ");
-                Album=sc.nextLine();
-                if(!mapAlbum.containsKey(Album))
+                albumSearch=sc.nextLine();
+                if(!mapAlbum.containsKey(albumSearch))
                 {
                   System.out.println("Album is not exist go to [7th --> A] option ");
                   break;
@@ -464,85 +398,72 @@
                 {
                   System.out.println("\033[H\033[2J\t\t\t\t\tEnter the Song Details ");
                   System.out.println("Enter the Title ");
-                  Title=sc.nextLine();
+                  songTitle=sc.nextLine();
                   System.out.println("Enter the Artist ");
-                  Artist=sc.nextLine();
+                  songArtist=sc.nextLine();
                   System.out.println("Enter the Year ");
-                  Year=sc.nextLine();             
+                  songYear=sc.nextLine();             
                   System.out.println("Enter the Duration ");
-                  Duration=sc.nextLine();
-                  Song_lib song_add2=new Song_lib();
-                  song_add2.setDuration(Duration);
-                  song_add2.setTitle(Title);
-                  song_add2.setYear(Year);
-                  song_add2.setAlbum(Album);
-                  song_add2.setArtist(Artist);
-                  list.add(song_add2);
-                  update_search_result_artist =mapAlbum.get(Album);
-                  Object[] objects = update_search_result_artist.toArray(); 
-                    for (Object obj : objects) {
-                     ints.add((int)obj);
-                   }
-                   ints.add(list.indexOf(song_add2));
-
-                  mapAlbum.put(Album,ints);
-                  if(mapArtist.containsKey(Artist)) {
+                  songDuration=sc.nextLine();
+                  Song_lib songAddObj=new Song_lib();
+                  songAddObj.setDuration(songDuration);
+                  songAddObj.setTitle(songTitle);
+                  songAddObj.setYear(songYear);
+                  songAddObj.setAlbum(albumSearch);
+                  songAddObj.setArtist(songArtist);
+                  list.add(songAddObj);
+                  updateSearchResult =mapAlbum.get(albumSearch);
+                  List<Integer> albumIndex = new ArrayList<Integer>(updateSearchResult);
+                  albumIndex.add(list.indexOf(songAddObj));
+                  mapAlbum.put(albumSearch,albumIndex);
+                  if(mapArtist.containsKey(songArtist)) {
                    System.out.println("Artist is Already exist this Song will automatically add on Artist list ");
-                   find_index_value=mapArtist.get(Artist);
-                   Object[] object = find_index_value.toArray(); 
-                    for (Object obj : object) {
-                     ints.add((int)obj);
-                   }
-                    ints.add(list.indexOf(song_add2));
+                    updateSearchResult =mapArtist.get(songArtist);
+                    List<Integer> albumIndex2 = new ArrayList<Integer>(updateSearchResult);
+                    albumIndex2.add(list.indexOf(songAddObj));
+                    mapAlbum.put(songArtist,albumIndex2);
                   }              
-                 mapArtist.put(Artist,ints);
-              }
-              }
-              else if(Choice_song.equalsIgnoreCase("R"))
+                 }
+               }
+              
+              else if(choiceSong.equalsIgnoreCase("R"))
               {
                 System.out.println("\t\t\t\t\t**** Song Deletion Menu****");
-                String Song_delete;
-                List<Integer> search_delete_result = new ArrayList();
-
+                String searchAlbum,songDelete,tempAlbumName;              
                 System.out.println("Enter the Album Name -> Song Name  for  Delete");
-                Album=sc.nextLine();
-                if(mapAlbum.containsKey(Album))
+                searchAlbum=sc.nextLine();
+                if(mapAlbum.containsKey(searchAlbum))
                 {
-                  System.out.println("Enter the  Song Name  for  Delete");
-                  Song_delete=sc.nextLine();
-                      if(mapTitle.containsKey(Song_delete))
-                      {
-                        search_delete_result =mapTitle.get(Song_delete);                      
-                        
-                          Object[] objects = search_delete_result.toArray(); 
-                          for (Object obj : objects) 
-                           {
-                              Song_lib song_obj_remove_album=(Song_lib)list.get((int)obj);  
-                              if(song_obj_remove_album.getTitle().equals(Song_delete)) 
-                              { 
-                                 System.out.println("\t\tGiven title :  "+Song_delete +" Artist name :  "+song_obj_remove_album.getArtist());
-                                 int index=list.indexOf(song_obj_remove_album);
-                                 list.remove(song_obj_remove_album);
-                                 mapTitle.remove(Song_delete);
-                                 find_index_value=mapArtist.get(song_obj_remove_album.getArtist());
-                                 Object[] object = find_index_value.toArray(); 
-                                 for (Object obk : object) 
-                                  {
-                                    ints.add((int)obk);
-                                  }
-                                    ints.remove(index);
-                                    mapAlbum.put(song_obj_remove_album.getAlbum(),ints);
-                                    mapArtist.put(song_obj_remove_album.getArtist(),ints);
-                            }
-                          }
-                      }
-                      else
-                      {
-                        System.out.println("Song not Exist ");
-                        break;
-                      }
+                System.out.println("Enter the  Song Name  for  Delete");
+                songDelete=sc.nextLine();
+                if(mapTitle.containsKey(songDelete))
+                 {
+                 updateSearchResult =mapTitle.get(songDelete);
+                for (Integer s : updateSearchResult)
+                {
+                Song_lib songObjRemoveAlbum=list.get(s);
+                System.out.println("\t\tGiven title :  "+songDelete +" Artist name :  "+songObjRemoveAlbum.getArtist());
+                int index=list.indexOf(songObjRemoveAlbum);
+                System.out.println("index is "+index+"Album name is "+songObjRemoveAlbum.getAlbum()+"  updateSearchResult"+updateSearchResult);
+                updateSearchResult=mapAlbum.get(songObjRemoveAlbum.getAlbum());
+                List<Integer> albumIndex = new ArrayList<Integer>(updateSearchResult);
+                albumIndex.remove(index);
+                mapAlbum.put(searchAlbum,albumIndex);
+                updateSearchResult=mapArtist.get(songObjRemoveAlbum.getArtist());
+                System.out.println("updateSearchResult   "+updateSearchResult);
+                List<Integer> albumIndex2 = new ArrayList<Integer>(updateSearchResult);
+                albumIndex2.remove(index);
+                System.out.println(albumIndex2);
+                mapTitle.remove(songDelete);
+                mapArtist.put(songObjRemoveAlbum.getArtist(),albumIndex2);
+                list.remove(songObjRemoveAlbum);
                 }
-                else
+                }else
+                {
+                System.out.println("Song not Exist  go to song Add menu");
+                break;
+                }
+                }else
                 {
                   System.out.println("Album is not exist go to [7th --> A] option ");
                   break;
@@ -553,14 +474,12 @@
                 System.out.println("\033[H\033[2J");
                 System.out.println("****************************************\tPlease Give Correct Input\t****************************************\n\n\n\n\n");
               }
-
-            }
-            break;
+              break;
             default:
             System.out.println("\n\t****Please give a valid Input****\t\n");
             break;
-
          }
         }//while end
       }//End of main() method
     }//end of DisplayArrayList class
+  
