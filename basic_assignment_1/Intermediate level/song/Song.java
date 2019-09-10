@@ -138,9 +138,9 @@
                   songObjTitle.setTitle(newTitle);
                   System.out.println("\t\t\t\tUpdated Result is :\n");
                   mapTitle.remove(titleSearch);
-                      mapTitle.put(newTitle,resTitle);  //Map update
-                      System.out.println("\t"+songObjTitle.getTitle()+"\t\t" +songObjTitle.getAlbum()+"\t\t" +songObjTitle.getYear()+"\t\t" +songObjTitle.getArtist()+"\t" +songObjTitle.getDuration());
-                    }
+                  mapTitle.put(newTitle,resTitle);  //Map update
+                  System.out.println("\t"+songObjTitle.getTitle()+"\t\t" +songObjTitle.getAlbum()+"\t\t" +songObjTitle.getYear()+"\t\t" +songObjTitle.getArtist()+"\t" +songObjTitle.getDuration());
+                }
                   }
                   else if(choiceTitle.equalsIgnoreCase("A"))
                   {
@@ -150,9 +150,9 @@
                     System.out.println("Enter the old Album name ");
                     sc.nextLine();
                     searchAlbum=sc.nextLine();
-                    updateSearchResult=mapAlbum.get(searchAlbum);
+                    resAlbum=mapAlbum.get(searchAlbum);
 
-                    for (Integer s : updateSearchResult)
+                    for (Integer s : resAlbum)
                     {
                       Song_lib songObjAlbum=list.get(s);
                       System.out.println("\t\t\t\t\t\t\tYour Search Result");
@@ -162,7 +162,7 @@
                       newAlbum=sc.nextLine();
                       songObjAlbum .setAlbum(newAlbum);
                       mapAlbum.remove(searchAlbum);
-                      mapAlbum.put(newAlbum,updateSearchResult);
+                      mapAlbum.put(newAlbum,resAlbum);
                     }
 
                   }
@@ -174,17 +174,17 @@
                     sc.nextLine();
                     System.out.println("Enter the old Artist Name ");
                     searchArtist=sc.nextLine();
-                    updateSearchResult =mapArtist.get(searchArtist);
+                    resArtist =mapArtist.get(searchArtist);
                     System.out.println("Enter the  New Aritst Name ");
                     newArtistName=sc.nextLine();
-                    for (Integer s : updateSearchResult)
+                    for (Integer s : resArtist)
                     {
                       Song_lib songObjName=list.get(s);
                       System.out.println("\t\t\t\t\t\t\tYour Search Result");
                       System.out.println("\t"+songObjName.getTitle()+"\t\t" +songObjName.getAlbum()+"\t\t" +songObjName.getYear()+"\t\t" +songObjName.getArtist()+"\t" +songObjName.getDuration());
                       songObjName .setArtist(newArtistName);
                       mapArtist.remove(searchArtist);
-                      mapArtist.put(newArtistName,updateSearchResult);
+                      mapArtist.put(newArtistName,resArtist);
                     }
                   }
                   else
@@ -218,8 +218,8 @@
                 albumSearch =sc.nextLine();
                 System.out.println("\033[H\033[2J");
                 System.out.println("\t\t\t\t\t****list of all the songs in Album : "+albumSearch+" ****");
-                updateSearchResult =mapAlbum.get(albumSearch);
-                for (Integer s : updateSearchResult)
+                resAlbum =mapAlbum.get(albumSearch);
+                for (Integer s : resAlbum)
                 {
                   Song_lib listofAlbum=list.get(s);              
                   System.out.println(listofAlbum.getTitle());
@@ -256,7 +256,7 @@
                      System.out.println("Enter the Duration ");
                      newSongAddObj.setDuration(sc.nextLine());
                      list.add(newSongAddObj);
-                     updateSearchResult.add(list.indexOf(newSongAddObj));
+                     // updateSearchResult.add(list.indexOf(newSongAddObj));
 
                      if(mapArtist.containsKey(newSongAddObj.getArtist()))
                      {
