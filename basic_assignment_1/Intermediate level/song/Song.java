@@ -45,7 +45,14 @@
 
        public  static void reIndex(List<Integer> indexlist,int x )
        {
-        System.out.println("x :"+x+" indexlist "+indexlist);
+        System.out.println(" indexlist size : "+indexlist.size());
+        if(indexlist.size()>0)
+        {
+          for(Integer s : indexlist)
+            if(s>x)
+              s=(s-1);
+            indexlist.add(s);
+        }
       }
 
       public static void main(String[] args)
@@ -453,6 +460,8 @@
                       resArtist=mapArtist.get(songObjRemoveAlbum.getArtist());
                       resArtist.remove(s);
                       mapTitle.remove(songDelete);
+                      reIndex(resArtist,list.indexOf(songObjRemoveAlbum));
+                      reIndex(resAlbum,list.indexOf(songObjRemoveAlbum));
                       list.remove(songObjRemoveAlbum);
                     }
                   }
