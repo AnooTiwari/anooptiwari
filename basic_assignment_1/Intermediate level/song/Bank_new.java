@@ -10,6 +10,7 @@ import java.util.Date;
 				private long accBalence;
 				private static double intRate;
 				private String accType;
+				
 				private double[] transactions;
 				private String[] transactionsSummary;
 				private int numOfTransactions=0;
