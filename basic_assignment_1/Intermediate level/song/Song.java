@@ -338,7 +338,7 @@
                 
                 
                 System.out.println("inside of case 7 R mapArtist"+mapArtist.values());
-                reIndex(mapArtist,s);
+                reIndex(mapTitle,s);
               }
 
                 }          
