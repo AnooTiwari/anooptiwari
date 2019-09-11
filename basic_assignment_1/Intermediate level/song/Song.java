@@ -43,17 +43,19 @@
       }                                                   /*Class end */
       public class Song  {
 
-       public  static void reIndex(List<Integer> indexlist,int x )
-       {
-        System.out.println(" indexlist size : "+indexlist.size());
-        if(indexlist.size()>0)
-        {
-          for(Integer s : indexlist)
-            if(s>x)
-              s=(s-1);
-            indexlist.add(s);
+         public  static void reIndex( Map< String, List<Integer>> mapTitle,int x )
+         { 
+          System.out.println(" map is : "+mapTitle+"  index x :"+x+"   ");
+         
+
+          // if(indexlist.size()>0)
+          // {
+          //   for(Integer s : indexlist){
+          //     if(s>x)
+          //     indexlist.add(s-1);
+          //   }
+          // }
         }
-      }
 
       public static void main(String[] args)
       {
@@ -68,21 +70,21 @@
         List<Integer> resAlbum= new ArrayList();
         List<Integer> resTitle= new ArrayList();
         /*Test input Start*/
-        Song_lib song=new Song_lib();
-        song.setDuration("5.0");
-        song.setTitle("Spno ki rani");
-        song.setYear("1969");
-        song.setAlbum("Aradhana");
-        song.setArtist("Kishore Kumar");
+        // Song_lib song=new Song_lib();
+        // song.setDuration("5.0");
+        // song.setTitle("Spno ki rani");
+        // song.setYear("1969");
+        // song.setAlbum("Aradhana");
+        // song.setArtist("Kishore Kumar");
 
-        resArtist.add(0);
-        resAlbum.add(0);
-        resTitle.add(0);
+        // resArtist.add(0);
+        // resAlbum.add(0);
+        // resTitle.add(0);
 
-        mapTitle.put("Spno ki rani",resTitle);
-        mapAlbum.put("Aradhana",resAlbum);
-        mapArtist.put("Kishore Kumar",resArtist);
-        list.add(song);
+        // mapTitle.put("Spno ki rani",resTitle);
+        // mapAlbum.put("Aradhana",resAlbum);
+        // mapArtist.put("Kishore Kumar",resArtist);
+        // list.add(song);
 
 
         /*Test input end*/
@@ -106,7 +108,7 @@
               System.out.println("\t\tTitle\t\t\tAlbum\t\t\tYear\t\tArtist\t\tDuration ");
               for (Song_lib s : list)
               {
-                System.out.println("\t"+s.getTitle()+"\t\t" +s.getAlbum()+"\t\t" +s.getYear()+"\t\t" +s.getArtist()+"\t" +s.getDuration());
+                System.out.println(list.indexOf(s)+"\t"+s.getTitle()+"\t\t" +s.getAlbum()+"\t\t" +s.getYear()+"\t\t" +s.getArtist()+"\t" +s.getDuration());
               }
               System.out.println("===========================================================================================================");
             }
@@ -243,6 +245,8 @@
                   sc.nextLine();
                   if(choiceSong.equalsIgnoreCase("A"))
                   {
+                    while(true)
+                    {
                     String newAddTitle,newArtist,newAlbum,newYear,newDuration;
                     System.out.println("\t\t\t\t\t**** New Song Addition Menu****");
                     System.out.println("Enter the Title ");
@@ -302,6 +306,11 @@
                   System.out.println(mapTitle);
                   System.out.println(mapAlbum) ;
                   System.out.println(mapArtist);
+                  System.out.println("press E for exit");
+                  String exit=sc.nextLine();
+                  if(exit.equalsIgnoreCase("e"))
+                    break;
+                }
                 }
                 else if(choiceSong.equalsIgnoreCase("R"))
                 {
@@ -310,18 +319,28 @@
                   System.out.println("Enter the Title of Song for  Delete");
                   resTitle=mapTitle.get(sc.nextLine());
                   System.out.println("Check");
+                  
                   for (Integer s : resTitle)
                   {
                     Song_lib songforDeleteObj=list.get(s);
                     mapTitle.remove(songforDeleteObj.getTitle());
                     resArtist=mapArtist.get(songforDeleteObj.getArtist());
                     resArtist.remove(s);
+                    // reIndex(resArtist,s,"Artist");
                     resAlbum=mapAlbum.get(songforDeleteObj.getAlbum());
-                    resAlbum.remove(s);
-                    reIndex(resArtist,list.indexOf(songforDeleteObj));
-                    reIndex(resAlbum,list.indexOf(songforDeleteObj));
+                    resAlbum.remove(s);                    
+                    //  reIndex(resAlbum,s,"album");
+                    
                     list.remove(songforDeleteObj); 
-                  }  
+                   
+                  System.out.println("inside od case 7 R resTitle"+resTitle);
+                  // reIndex(resTitle,s,"title");
+                
+                
+                System.out.println("inside of case 7 R mapArtist"+mapArtist.values());
+                reIndex(mapArtist,s);
+              }
+
                 }          
                 else
                 {
@@ -434,7 +453,7 @@
                   else
                   {
                     resArtist= new ArrayList();
-                    resArtist.add(list.indexOf(songAddObj));
+                     resArtist.add(list.indexOf(songAddObj));
                     mapArtist.put(songAddObj.getArtist(),resArtist);
 
                   }              
@@ -460,8 +479,8 @@
                       resArtist=mapArtist.get(songObjRemoveAlbum.getArtist());
                       resArtist.remove(s);
                       mapTitle.remove(songDelete);
-                      reIndex(resArtist,list.indexOf(songObjRemoveAlbum));
-                      reIndex(resAlbum,list.indexOf(songObjRemoveAlbum));
+                      // reIndex(resArtist,list.indexOf(songObjRemoveAlbum));
+                      // reIndex(resAlbum,list.indexOf(songObjRemoveAlbum));
                       list.remove(songObjRemoveAlbum);
                     }
                   }
