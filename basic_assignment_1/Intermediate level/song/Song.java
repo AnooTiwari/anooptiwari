@@ -43,19 +43,23 @@
       }                                                   /*Class end */
       public class Song  {
 
-         public  static void reIndex( Map< String, List<Integer>> mapTitle,int x )
-         { 
-          System.out.println(" map is : "+mapTitle+"  index x :"+x+"   ");
-         
+       public  static void reIndex( Map< String, List<Integer>> m,int x ,String s)
+       { 
+        System.out.println(" map is : "+m+"  index x :"+x+"  opration is going on  "+s);
 
-          // if(indexlist.size()>0)
-          // {
-          //   for(Integer s : indexlist){
-          //     if(s>x)
-          //     indexlist.add(s-1);
-          //   }
-          // }
+        for (Map.Entry<String, List<Integer>> me : m.entrySet()) 
+        {
+         List<Integer> valueList = me.getValue();
+         for (int i=0; i<valueList.size(); i++) 
+         {
+          if(valueList.get(i)>x)
+          {
+            valueList.set(i,valueList.get(i)-1);
+          }
         }
+      }
+
+    }
 
       public static void main(String[] args)
       {
@@ -338,7 +342,12 @@
                 
                 
                 System.out.println("inside of case 7 R mapArtist"+mapArtist.values());
-                reIndex(mapTitle,s);
+                reIndex(mapTitle,s,"Title");
+                reIndex(mapArtist,s,"Artist");
+                reIndex(mapAlbum,s,"Album");
+                System.out.println("after the Function call mapTitle  "+mapTitle);
+                System.out.println("after the Function call mapTitle  "+mapArtist);
+                System.out.println("after the Function call mapTitle  "+mapAlbum);
               }
 
                 }          
