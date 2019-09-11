@@ -1,0 +1,282 @@
+	
+Album is Already Present this song will going to add Album library  
+{love=[0], chand=[3], barast=[2], dill=[1]}
+{rsong=[2], mysong=[0, 3], vsong=[1]}
+{Anoop=[0, 3], ronsih=[2], vikas=[1]}
+_____________________________________________________________________________________
+{love=[0], chand=[3], shape=[3], barast=[2]}
+{song=[3], rsong=[2], mysong=[0, 3], vsong=[]}
+{Anoop=[0, 3], ronsih=[2], vikas=[3]}
+matlab agar 1 number delete huwa hy to 2->1 or 3->2 
+matlab 1 se bade wale sare ak ak kam ho jane chaie
+_______________________________________________________________________________________
+		Title			Album			Year		Artist		Duration 
+0	love		mysong		1998		Anoop	5
+1	dill		vsong		1992		vikas	3
+2	barsat		rsong		1925		ronish	4
+____________________________________________________________________________________________________
+after delete dill song
+		Title			Album			Year		Artist		Duration 
+0	love		mysong		1998		Anoop	5
+1	barsat		rsong		1925		ronish	4
+
+____________________________________________________________________________________________________ mail list is working fine
+							insert one more song  map is like 
+
+Album is Already Present this song will going to add Album library  
+{love=[0], chand=[2], barsat=[2]}
+{rsong=[2], mysong=[0, 2], vsong=[]}
+{Anoop=[0, 2], ronish=[2], vikas=[]}
+
+0	love		mysong		1998		Anoop	5
+1	barsat		rsong		1925		ronish	4
+2	chand		mysong		1999		Anoop	3
+
+
+jo number delete ho raha hy usse bade wale sare me index value me -1 karna pade ga
+
+_____________________________________________________________________________________
+{p=[1], a=[0], s=[2], l=[3]}title
+{r=[1], c=[0], v=[2], n=[3]}album
+{q=[1], b=[0], t=[2], m=[3]}artist
+
+
+	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	p		r		s		q	t
+2	s		v		u		t	w
+3	l		n		o		m	p
+
+__________________________________________________________________________________
+after delete s
+
+inside of case 7 R mapArtist[[1], [0], [], [3]]/*Yaha 3 ko 2 ho jana chaie tha*/
+ map is : {q=[1], b=[0], t=[], m=[3]}  index x :2  
+_________________________________________________Again________________________________________________________
+insid the else 
+
+{s3=[2], s4=[3], s1=[0], s2=[1]}
+{al2=[1], al1=[0], al4=[3], al3=[2]}
+{a1=[0], a2=[1], a3=[2], a4=[3]}
+
+	Title		Album		Year		Artist	Duration 
+0	s1		al1		y1		a1	d1
+1	s2		al2		y2		a2	d2
+2	s3		al3		y3		a3	d3
+3	s4		al4		y4		a4	d4
+
+______________________________s2 deleted_________________________________________________________________
+inside od case 7 R resTitle[1]
+inside of case 7 R mapArtist[[0], [], [2], [3]]
+ map is : {s3=[2], s4=[3], s1=[0]}  index x :1   
+
+	Title		Album		Year		Artist	Duration 
+0	s1		al1		y1		a1	d1
+1	s3		al3		y3		a3	d3
+2	s4		al4		y4		a4	d4
+
+map ke key ke values me index se bada wala term ko -1 karna hy bas
+
+______________________________________________test again______________________________________________________________
+
+{s3=[2], s4=[3], s5=[4], s1=[0], s2=[1]}
+{sl2=[1], al4=[3], sl1=[0], al3=[2], al5=[4]}
+{a2=[1], a3=[2], a4=[3], a5=[4], s1=[0]}
+
+	Title		Album		Year		Artist	Duration 
+0	s1		sl1		y1		s1	d1				/*input data*/
+1	s2		sl2		y2		a2	d2
+2	s3		al3		y3		a3	d3
+3	s4		al4		y4		a4	d4
+4	s5		al5		y5		a5	d5
+
+_______________________________________________________________________________________________
+
+map is : {s3=[2], s4=[3], s5=[4], s1=[0]}  index x :1   
+2 kk
+3 kk
+4 kk
+0 k
+
+	Title		Album		Year		Artist		Duration 
+0	s1		sl1		y1		s1	d1
+1	s3		al3		y3		a3	d3
+2	s4		al4		y4		a4	d4
+3	s5		al5		y5		a5	d5
+index se bade wali  
+
+________________________________________new data input __________________________________________________________________
+	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	f		h		i		g	j
+2	k		m		n		l	o
+3	p		r		s		q	t
+f delete
+
+
+q=[3], b=[0], g=[], l=[2] artist map me
+
+_____________________________________________________recived_________________________________________________
+	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	k		m		n		l	o
+2	p		r		s		q	t
+
+___________________________________________________New start__________________________________________________________________________________________
+	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	f		h		i		g	j
+2	k		m		n		l	o
+3	p		r		s		q	t
+
+			after delete f new list is 
+
+	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	k		m		n		l	o
+2	p		r		s		q	t
+
+
+inside of case 7 R mapArtist[[3], [0], [], [2]](right)
+ map is : {q=[3], b=[0], g=[], l=[2]}  index x :1  opration is going on  Artist(right)
+after the Function call mapTitle  {q=[2], b=[0], g=[], l=[1]}(right)
+
+
+__________________________________________________________final chekk_________________________________________________________________________
+input data 
+
+index	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	f		h		i		g	j
+2	k		m		n		l	o
+3	p		r		s		q	t
+4	w		y		z		x	a
+
+				map is like
+{p=[3], a=[0], f=[1], w=[4], k=[2]}title
+{r=[3], c=[0], h=[1], y=[4], m=[2]}album
+{q=[3], b=[0], g=[1], x=[4], l=[2]}artist
+
+
+				Removing k
+index	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	f		h		i		g	j
+2	p		r		s		q	t
+3	w		y		z		x	a
+
+
+
+inside of case 7 R mapArtist[[3], [0], [1], [4], []]
+ map is : {p=[3], a=[0], f=[1], w=[4]}  index x :2  opration is going on  Title
+ map is : {q=[3], b=[0], g=[1], x=[4], l=[]}  index x :2  opration is going on  Artist
+ map is : {r=[3], c=[0], h=[1], y=[4], m=[]}  index x :2  opration is going on  Album
+after the Function call mapTitle  {p=[2], a=[0], f=[1], w=[3]}(title)
+after the Function call mapTitle  {q=[2], b=[0], g=[1], x=[3], l=[]}(artist)
+after the Function call mapTitle  {r=[2], c=[0], h=[1], y=[3], m=[]}(album)
+
+_______________________________________________________--Single input check compleate --_and correct--_________________________________________________
+
+							--Single input check one more delte --
+index	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	f		h		i		g	j
+2	p		r		s		q	t
+3	w		y		z		x	a
+						
+						--p is deleted--
+
+
+index	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	f		h		i		g	j
+2	w		y		z		x	a
+					
+								map is like 
+inside of case 7 R mapArtist[[], [0], [1], [3], []]
+ map is : {a=[0], f=[1], w=[3]}  index x :2  opration is going on  Title
+ map is : {q=[], b=[0], g=[1], x=[3], l=[]}  index x :2  opration is going on  Artist
+ map is : {r=[], c=[0], h=[1], y=[3], m=[]}  index x :2  opration is going on  Album
+after the Function call mapTitle  {a=[0], f=[1], w=[2]}(title)
+after the Function call mapTitle  {q=[], b=[0], g=[1], x=[2], l=[]}(Artist)
+after the Function call mapTitle  {r=[], c=[0], h=[1], y=[2], m=[]}(Album)
+
+____________________________________________--Single input tast case 2 passed --__________________________________________________________
+
+___________________________________________--when album is common on 2 at the end of list song-- ________________________________________________
+index	Title		Album		Year		Artist	Duration 
+0	a		c	(x)	d		b	e
+1	f		h		i		g	j
+2	w		y		z		x	a
+3	aa		c	(x)	d		a	e
+
+inside od case 7 R resTitle[3]
+inside of case 7 R mapArtist[[], [], [0], [1], [2], []]
+ map is : {a=[0], f=[1], w=[2]}  index x :3  opration is going on  Title
+ map is : {q=[], a=[], b=[0], g=[1], x=[2], l=[]}  index x :3  opration is going on  Artist
+ map is : {r=[], c=[0], h=[1], y=[2], m=[]}  index x :3  opration is going on  Album
+after the Function call mapTitle  {a=[0], f=[1], w=[2]}
+after the Function call mapTitle  {q=[], a=[], b=[0], g=[1], x=[2], l=[]}
+after the Function call mapTitle  {r=[], c=[0], h=[1], y=[2], m=[]}
+
+_________________________________________________________passed______________________________________________________________________________________
+
+__________________________________________________--- album and artist is common---____________________________________________________
+index Title		Album		Year		Artist	Duration 
+0	a		c (x)		d  (x)		b (x)	e
+1	f		h		i		g	j
+2	w		y		z		x	a
+3	aa		c (x)		d  (x)		b (x)	e
+4	l		n		k		m	j
+5	p		t		y		b (x)	u
+
+						map is like
+{aa=[3], p=[5], a=[0], f=[1], w=[2], l=[4]}		title
+{r=[], c=[0, 3], t=[5], h=[1], y=[2], m=[], n=[4]}	album
+{q=[], a=[], b=[0, 3, 5], g=[1], x=[2], l=[], m=[4]}	artist
+
+
+						--removeing [aa]--
+
+inside of case 7 R mapArtist[[], [], [0, 5], [1], [2], [], [4]]
+ map is : {p=[5], a=[0], f=[1], w=[2], l=[4]}  index x :3  opration is going on  Title
+ map is : {q=[], a=[], b=[0, 5], g=[1], x=[2], l=[], m=[4]}  index x :3  opration is going on  Artist
+ map is : {r=[], c=[0], t=[5], h=[1], y=[2], m=[], n=[4]}  index x :3  opration is going on  Album
+after the Function call mapTitle  {p=[4], a=[0], f=[1], w=[2], l=[3]}
+after the Function call mapTitle  {q=[], a=[], b=[0, 4], g=[1], x=[2], l=[], m=[3]}
+after the Function call mapTitle  {r=[], c=[0], t=[4], h=[1], y=[2], m=[], n=[3]}
+
+
+
+					--updated list is --
+
+	Title		Album		Year		Artist	Duration 
+0	a		c		d		b	e
+1	f		h		i		g	j
+2	w		y		z		x	a
+3	l		n		k		m	j
+4	p		t		y		b	u
+
+________________________________________________________---successfully tested ---______________________________________________________________
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
