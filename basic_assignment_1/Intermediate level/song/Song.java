@@ -69,7 +69,7 @@ public class Song {
         List < Integer > resAlbum = new ArrayList();
         List < Integer > resTitle = new ArrayList();
         /*Test input Start*/
-        Song_lib song=new Song_lib();
+        Song_lib song = new Song_lib();
         // song.setDuration("5.0");
         // song.setTitle("Spno ki rani");
         // song.setYear("1969");
@@ -328,31 +328,33 @@ public class Song {
                 if (choiceSong.equalsIgnoreCase("A")) {
                     System.out.println("\033[H\033[2J");
                     System.out.println("\t\t\t\t\t**** New Artist Addition Menu****");
-                    System.out.println("Enter the title of song  ");
+                    System.out.println("Enter the TITILE of song  ");
                     resTitle = mapTitle.get(sc.nextLine());
                     for (Integer s: resTitle) {
                         Song_lib songobjAddartist = list.get(s);
 
                         System.out.println("Enter the Second Artist name");
-                        newArtistAdd=sc.nextLine();//new artist name
-                        if(!songobjAddartist.getArtist().contains(newArtistAdd)){
-                        if(mapArtist.containsKey(newArtistAdd)){
-                        resArtist=mapArtist.get(newArtistAdd);
-                        resArtist.add(s);
-                        songobjAddartist.setArtist(songobjAddartist.getArtist()+","+newArtistAdd);
-                        System.out.println("\n\t\t *** Artist is Already exist  *** \t\t\n");
-                        System.out.println("\n\t\t *** Successfully Added *** \t\t\n");
-                        }
-                        else
-                        {
-                            resArtist = new ArrayList();
-                            resArtist.add(s);
-                            mapArtist.put(newArtistAdd,resArtist);
-                            songobjAddartist.setArtist(songobjAddartist.getArtist()+","+newArtistAdd);
-                        }
-                        }
-                        else
-                        {
+                        newArtistAdd = sc.nextLine();
+                        if (!songobjAddartist.getArtist().contains(newArtistAdd)) {
+                            if (mapArtist.containsKey(newArtistAdd)) {
+                                resArtist = mapArtist.get(newArtistAdd);
+                                resArtist.add(s);
+                                if (!songobjAddartist.getArtist().equals(""))
+                                    songobjAddartist.setArtist(songobjAddartist.getArtist() + "," + newArtistAdd);
+                                else
+                                    songobjAddartist.setArtist(newArtistAdd);
+                                System.out.println("\n\t\t *** Successfully Added *** \t\t\n");
+                            } else {
+                                resArtist = new ArrayList();
+                                resArtist.add(s);
+                                mapArtist.put(newArtistAdd, resArtist);
+                                if (!songobjAddartist.getArtist().equals(""))
+                                    songobjAddartist.setArtist(songobjAddartist.getArtist() + "," + newArtistAdd);
+                                else
+                                    songobjAddartist.setArtist(newArtistAdd);
+
+                            }
+                        } else {
                             System.out.println("\n\t\t *** can't Add same Artist twice *** \t\t\n");
                         }
                     }
@@ -364,16 +366,21 @@ public class Song {
                     resTitle = mapTitle.get(sc.nextLine());
                     for (Integer s: resTitle) {
                         Song_lib songObjRemoveArtist = list.get(s);
-                        System.out.println(mapArtist+"  Check0");
-                        System.out.println(songObjRemoveArtist.getArtist()+"  check .5");
-                        resArtist = mapArtist.get(songObjRemoveArtist.getArtist());//it will return artist's song list
-                        System.out.println(resArtist+"  Check1");
-                        songObjRemoveArtist.setArtist("");
-                        System.out.println(songObjRemoveArtist.getArtist()+"  Check2");
-                        resArtist.remove(s);
-                        mapArtist.remove(songObjRemoveArtist.getArtist());
-                        mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
+                        if (songObjRemoveArtist.getArtist().contains(",")) {
+                            String[] artist = songObjRemoveArtist.getArtist().split(",");
+                            for (String k: artist) {
+                                if (k.equalsIgnoreCase(""))
+                                    continue;
+                                resArtist = mapArtist.get(k);
+                                songObjRemoveArtist.setArtist("");
+                                resArtist.remove(s);
+                                mapArtist.remove(songObjRemoveArtist.getArtist());
+                                mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
+                            }
+                        }
                     }
+                    if (mapArtist.containsKey(""))
+                        mapArtist.remove("");
                 } else {
                     System.out.println("\033[H\033[2J");
                     System.out.println("****************************************\tPlease Give Correct Input\t****************************************\n\n\n\n\n");
@@ -442,22 +449,20 @@ public class Song {
                             resTitle = mapTitle.get(songDelete);
                             for (Integer s: resTitle) {
                                 Song_lib songObjRemoveAlbum = list.get(s);
-                                if(songObjRemoveAlbum.getTitle().equalsIgnoreCase(songDelete)&&songObjRemoveAlbum.getAlbum().equalsIgnoreCase(searchAlbum))
-                                {
-                                resAlbum = mapAlbum.get(songObjRemoveAlbum.getAlbum());
-                                resAlbum.remove(s);
-                                resArtist = mapArtist.get(songObjRemoveAlbum.getArtist());
-                                resArtist.remove(s);
-                                mapTitle.remove(songDelete);
-                                list.remove(songObjRemoveAlbum);
-                                reIndex(mapTitle, s, "Title");
-                                reIndex(mapArtist, s, "Artist");
-                                reIndex(mapAlbum, s, "Album");
-                                System.out.println("after the Function call mapTitle  " + mapTitle);
-                                System.out.println("after the Function call mapTitle  " + mapArtist);
-                                System.out.println("after the Function call mapTitle  " + mapAlbum);
-                                }else
-                                {
+                                if (songObjRemoveAlbum.getTitle().equalsIgnoreCase(songDelete) && songObjRemoveAlbum.getAlbum().equalsIgnoreCase(searchAlbum)) {
+                                    resAlbum = mapAlbum.get(songObjRemoveAlbum.getAlbum());
+                                    resAlbum.remove(s);
+                                    resArtist = mapArtist.get(songObjRemoveAlbum.getArtist());
+                                    resArtist.remove(s);
+                                    mapTitle.remove(songDelete);
+                                    list.remove(songObjRemoveAlbum);
+                                    reIndex(mapTitle, s, "Title");
+                                    reIndex(mapArtist, s, "Artist");
+                                    reIndex(mapAlbum, s, "Album");
+                                    System.out.println("after the Function call mapTitle  " + mapTitle);
+                                    System.out.println("after the Function call mapTitle  " + mapArtist);
+                                    System.out.println("after the Function call mapTitle  " + mapAlbum);
+                                } else {
                                     System.out.println("\n\t\t oops!! something went wrong ");
                                 }
                             }
