@@ -364,8 +364,12 @@ public class Song {
                     resTitle = mapTitle.get(sc.nextLine());
                     for (Integer s: resTitle) {
                         Song_lib songObjRemoveArtist = list.get(s);
+                        System.out.println(mapArtist+"  Check0");
+                        System.out.println(songObjRemoveArtist.getArtist()+"  check .5");
                         resArtist = mapArtist.get(songObjRemoveArtist.getArtist());//it will return artist's song list
-                        songObjRemoveArtist.setArtist(null);
+                        System.out.println(resArtist+"  Check1");
+                        songObjRemoveArtist.setArtist("");
+                        System.out.println(songObjRemoveArtist.getArtist()+"  Check2");
                         resArtist.remove(s);
                         mapArtist.remove(songObjRemoveArtist.getArtist());
                         mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
