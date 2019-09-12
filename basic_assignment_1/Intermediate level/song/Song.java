@@ -334,12 +334,27 @@ public class Song {
                         Song_lib songobjAddartist = list.get(s);
 
                         System.out.println("Enter the Second Artist name");
-                        oldValue = songobjAddartist.getArtist();
-                        songobjAddartist.setArtist(songobjAddartist.getArtist() + "," + sc.nextLine());
-                        newvalue = (songobjAddartist.getArtist());
-                        mapArtist.remove(oldValue);
-                        mapArtist.put(newvalue, resTitle);
-                        System.out.println(mapArtist);
+                        newArtistAdd=sc.nextLine();//new artist name
+                        if(!songobjAddartist.getArtist().contains(newArtistAdd)){
+                        if(mapArtist.containsKey(newArtistAdd)){
+                        resArtist=mapArtist.get(newArtistAdd);
+                        resArtist.add(s);
+                        songobjAddartist.setArtist(songobjAddartist.getArtist()+","+newArtistAdd);
+                        System.out.println("\n\t\t *** Artist is Already exist  *** \t\t\n");
+                        System.out.println("\n\t\t *** Successfully Added *** \t\t\n");
+                        }
+                        else
+                        {
+                            resArtist = new ArrayList();
+                            resArtist.add(s);
+                            mapArtist.put(newArtistAdd,resArtist);
+                            songobjAddartist.setArtist(songobjAddartist.getArtist()+","+newArtistAdd);
+                        }
+                        }
+                        else
+                        {
+                            System.out.println("\n\t\t *** can't Add same Artist twice *** \t\t\n");
+                        }
                     }
                 } else if (choiceSong.equalsIgnoreCase("R")) {
                     String tempArtistName, artistNameforDelete;
@@ -349,7 +364,7 @@ public class Song {
                     resTitle = mapTitle.get(sc.nextLine());
                     for (Integer s: resTitle) {
                         Song_lib songObjRemoveArtist = list.get(s);
-                        resArtist = mapArtist.get(songObjRemoveArtist.getArtist());
+                        resArtist = mapArtist.get(songObjRemoveArtist.getArtist());//it will return artist's song list
                         songObjRemoveArtist.setArtist(null);
                         resArtist.remove(s);
                         mapArtist.remove(songObjRemoveArtist.getArtist());
@@ -423,6 +438,8 @@ public class Song {
                             resTitle = mapTitle.get(songDelete);
                             for (Integer s: resTitle) {
                                 Song_lib songObjRemoveAlbum = list.get(s);
+                                if(songObjRemoveAlbum.getTitle().equalsIgnoreCase(songDelete)&&songObjRemoveAlbum.getAlbum().equalsIgnoreCase(searchAlbum))
+                                {
                                 resAlbum = mapAlbum.get(songObjRemoveAlbum.getAlbum());
                                 resAlbum.remove(s);
                                 resArtist = mapArtist.get(songObjRemoveAlbum.getArtist());
@@ -435,6 +452,10 @@ public class Song {
                                 System.out.println("after the Function call mapTitle  " + mapTitle);
                                 System.out.println("after the Function call mapTitle  " + mapArtist);
                                 System.out.println("after the Function call mapTitle  " + mapAlbum);
+                                }else
+                                {
+                                    System.out.println("\n\t\t oops!! something went wrong ");
+                                }
                             }
                         } else {
                             System.out.println("Song not Exist  go to song Add menu");
