@@ -69,7 +69,7 @@ public class Song {
         List < Integer > resAlbum = new ArrayList();
         List < Integer > resTitle = new ArrayList();
         /*Test input Start*/
-        Song_lib song = new Song_lib();
+        // Song_lib song = new Song_lib();
         // song.setDuration("5.0");
         // song.setTitle("Spno ki rani");
         // song.setYear("1969");
@@ -382,15 +382,15 @@ public class Song {
                                 resArtist = mapArtist.get(k);
                                 songObjRemoveArtist.setArtist("");
                                 resArtist.remove(s);
-                                mapArtist.remove(songObjRemoveArtist.getArtist());
-                                mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
+                                // mapArtist.remove(songObjRemoveArtist.getArtist());
+                                // mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
                             }
                         }else
                         {
                                 songObjRemoveArtist.setArtist("");
                                 resArtist.remove(s);
-                                mapArtist.remove(songObjRemoveArtist.getArtist());
-                                mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
+                                // mapArtist.remove(songObjRemoveArtist.getArtist());
+                                // mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
                         }
                     }
                 }
