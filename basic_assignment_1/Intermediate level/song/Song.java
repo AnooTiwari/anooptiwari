@@ -68,25 +68,7 @@ public class Song {
         List < Integer > resArtist = new ArrayList();
         List < Integer > resAlbum = new ArrayList();
         List < Integer > resTitle = new ArrayList();
-        /*Test input Start*/
-        // Song_lib song = new Song_lib();
-        // song.setDuration("5.0");
-        // song.setTitle("Spno ki rani");
-        // song.setYear("1969");
-        // song.setAlbum("Aradhana");
-        // song.setArtist("Kishore Kumar");
-
-        // resArtist.add(0);
-        // resAlbum.add(0);
-        // resTitle.add(0);
-
-        // mapTitle.put("Spno ki rani",resTitle);
-        // mapAlbum.put("Aradhana",resAlbum);
-        // mapArtist.put("Kishore Kumar",resArtist);
-        // list.add(song);
-
-
-        /*Test input end*/
+        
         for (Song_lib s: list) {
             System.out.println("\n\n" + s.getTitle() + " " + s.getAlbum() + " " + s.getYear() + " " + s.getArtist() + " " + s.getDuration());
         }

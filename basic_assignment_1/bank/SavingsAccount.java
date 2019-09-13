@@ -1,37 +1,33 @@
 import java.util.Date;
 
-/**
- *
- * @
- */
 public class SavingsAccount extends Account {
 // instance variables decleared
-    private double int_rate;
+    private double intRate;
 
     //default constrictor
     public SavingsAccount(){
-      int_rate=0;  
+      intRate=0;  
     }
-//main construtor
-    public SavingsAccount(String c_name, String acc_num, double acc_balance, double int_rate) {
-        super(c_name,acc_num, acc_balance);
-        this.int_rate = int_rate;
+    //main construtor
+    public SavingsAccount(String cName, String accNum, double accBalance, double intRate) {
+        super(cName,accNum, accBalance);
+        this.intRate = intRate;
     }
-//getters and setters method decleared
+    //getters and setters method decleared
     public double setRate(double rate) {
-        return int_rate=rate/100;
+        return intRate=rate/100;
     }
 
     public double getRate() {
-        return int_rate;
+        return intRate;
     }
 
 
-//payInterest method decleared
+    //payInterest method decleared
     public void payInterest() {
-        double acc_amount=getBalance();
+        double accAmount=getBalance();
         double balance=0;
-        balance = (acc_amount + (acc_amount *getRate()));
+        balance = (accAmount + (accAmount *getRate()));
         setBalance(balance);
 
         System.out.printf("Account Balance With Interest is %.2f", setBalance(balance));
@@ -39,17 +35,20 @@ public class SavingsAccount extends Account {
         transactions.add(t1);
 
     }
-//Withdrawal method override
+    //Withdrawal method override
     @Override
+     /*@Override @Override annotation informs the compiler that the element is meant to override 
+    an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance. 
+    While it is not required to use this annotation when overriding a method, it helps to prevent errors.*/
     public void withdraw(double total) {
-        double acc_amount = getBalance();
+        double accAmount = getBalance();
         double balance = 0;
 
-        if (acc_amount < total) {
-            System.out.printf("Not enough funds your main account balance is :$%.2f", acc_amount);
+        if (accAmount < total) {
+            System.out.printf("Not enough funds your main account balance is :$%.2f", accAmount);
         } else {
 
-                    balance=acc_amount -= total;
+                    balance=accAmount -= total;
                    setBalance(balance);
             System.out.printf("Your withdrawal of :$" + total + " was successful your new  account balance is :$%.2f",setBalance(balance));
         }
@@ -58,23 +57,27 @@ public class SavingsAccount extends Account {
 
 
     }
-//Deposit method override
+    //Deposit method override
     @Override
+     /*@Override @Override annotation informs the compiler that the element is meant to override 
+    an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance. 
+    While it is not required to use this annotation when overriding a method, it helps to prevent errors.*/
     public void deposit(double total) {
         double balance;
-        double acc_amount = getBalance();
-        balance= acc_amount+=total;
+        double accAmount = getBalance();
+        balance= accAmount+=total;
         setBalance(balance);
         System.out.printf("Your deposit of :$" + total + " was successful your new account balance is :$%.2f",setBalance(balance));
         Transaction t1 = new Transaction(new Date()     ,     'D'    , setBalance(balance),  "Deposit Made");
         transactions.add(t1);
-
+        
     }
 
     @Override
+     /*@Override @Override annotation informs the compiler that the element is meant to override 
+    an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance. 
+    While it is not required to use this annotation when overriding a method, it helps to prevent errors.*/
     public String toString() {
-        return this.toString() + "Interest Rate: " + int_rate;
+        return this.toString() + "Interest Rate: " + intRate;
     }
-
-
 }
