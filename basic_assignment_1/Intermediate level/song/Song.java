@@ -330,6 +330,10 @@ public class Song {
                     System.out.println("\t\t\t\t\t**** New Artist Addition Menu****");
                     System.out.println("Enter the TITILE of song  ");
                     resTitle = mapTitle.get(sc.nextLine());
+                    if(resTitle == null || resTitle.size() == 0 || resTitle.contains(null) || resTitle.contains(""))
+                    System.out.println("Opps something went wrong!! Give Right Input  ");
+                    else
+                    {
                     for (Integer s: resTitle) {
                         Song_lib songobjAddartist = list.get(s);
 
@@ -358,12 +362,16 @@ public class Song {
                             System.out.println("\n\t\t *** can't Add same Artist twice *** \t\t\n");
                         }
                     }
+                }
                 } else if (choiceSong.equalsIgnoreCase("R")) {
                     String tempArtistName, artistNameforDelete;
                     System.out.println("\033[H\033[2J");
                     System.out.println("\t\t\t\t\t**** Artist Remove Menu****");
                     System.out.println("Enter the title of song  ");
                     resTitle = mapTitle.get(sc.nextLine());
+                    if(resTitle == null || resTitle.size() == 0 || resTitle.contains(null) || resTitle.contains(""))
+                     System.out.println("Opps something went wrong!!  ");
+                    else{
                     for (Integer s: resTitle) {
                         Song_lib songObjRemoveArtist = list.get(s);
                         if (songObjRemoveArtist.getArtist().contains(",")) {
@@ -377,8 +385,15 @@ public class Song {
                                 mapArtist.remove(songObjRemoveArtist.getArtist());
                                 mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
                             }
+                        }else
+                        {
+                                songObjRemoveArtist.setArtist("");
+                                resArtist.remove(s);
+                                mapArtist.remove(songObjRemoveArtist.getArtist());
+                                mapArtist.put(songObjRemoveArtist.getArtist(), resTitle);
                         }
                     }
+                }
                     if (mapArtist.containsKey(""))
                         mapArtist.remove("");
                 } else {
