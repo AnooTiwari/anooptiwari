@@ -1,3 +1,4 @@
+ 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
@@ -16,15 +17,15 @@ class SongLib {
         this.album = album;
         this.duration = duration;
         this.year = year;
-
     }
-    
+    public SongLib(){}
+
     public void setTitle(String title) {
         this.title = title;
     }
     public String getTitle() {
         return title;
-    }     
+    }
     public void setArtist(String artist) {
         this.artist = artist;
     }
@@ -48,10 +49,10 @@ class SongLib {
     }
     public String getYear() {
         return year;
-    }    
-} 
+    }
+}
 public class MusicLib{
-    Scanner sc= new Scanner(System.in);
+  static  Scanner sc= new Scanner(System.in);
 
 
     public static void printListOfAllSong(List < SongLib > list){
@@ -59,8 +60,7 @@ public class MusicLib{
             System.out.println("\n\t\t___--**Please Insert Data First**--___\t\t\n");
         else
         for (SongLib s: list) {
-        System.out.println(list.indexOf(s) + "\t" + s.getTitle() + "\t\t" + s.getAlbum() + "\t\t" );
-        System.out.println(s.getYear() + "\t\t" + s.getArtist() + "\t" + s.getDuration());
+        System.out.println("Index Num : "+list.indexOf(s) + "\t" +"Title : "+ s.getTitle() + "\t\t" +"Artist : "+ s.getArtist() + "\t\t"+"Album : "+s.getAlbum() + "\t\t" +"Year : "+ s.getYear() + "\t" +"Duration : "+ s.getDuration());
         }
     }/*printListOfAllSong end*/
 
@@ -74,16 +74,16 @@ public class MusicLib{
 
     public static  void editInfo(List < Integer > res,List < SongLib > list,Map < String, List < Integer >> map,String s){
     System.out.println("Enter the old"+s);
-    String search;
-    res = map.get(search); 
+    String search=sc.nextLine();
+    res = map.get(search);
     for (Integer k: res) {
         SongLib editObj = list.get(k);
         System.out.println("Enter the New "+s);
 
         if(s.equals("Title")){
         map.remove(search);
-        editObj.setTitle(sc.nextLine());        
-        map.put(editObj.getTitle(), res);    
+        editObj.setTitle(sc.nextLine());
+        map.put(editObj.getTitle(), res);
         }
 
         else if(s.equals("Album")){
@@ -100,16 +100,18 @@ public class MusicLib{
     }/*editInfo end*/
 
     public static  void listofmap(String s,List < Integer > res,List < SongLib > list,Map < String, List < Integer >> map){
-        
+
         System.out.println("Enter the "+s+" Name ");
         if(s.equals("Artist"))
         res = map.get(sc.nextLine());
 
         if(s.equals("Album"))
         res = map.get(sc.nextLine());
-
-        for (Integer s: res) {
-        SongLib objList = list.get(s);
+        if(res == null || res.size() == 0 || res.contains(null) || res.contains(""))
+        System.out.println("Opps something went wrong!! Give Right Input ");    
+        else
+        for (Integer k: res) {
+        SongLib objList = list.get(k);
         System.out.println(objList.getTitle());
         }
 
@@ -119,7 +121,8 @@ public class MusicLib{
         while(true)
         {
         System.out.println("Enter the Title ");
-        if (mapTitle.containsKey(sc.nextLine())) {
+        String newAddTitle = sc.nextLine();
+        if (mapTitle.containsKey(newAddTitle)) {
         System.out.println("Song is Already Present Please Remove it First ");
         break;
         }else {
@@ -137,8 +140,8 @@ public class MusicLib{
                 System.out.println("Enter the Duration ");
                 newSongAddObj.setDuration(sc.nextLine());
                 list.add(newSongAddObj);
-                ifKeyIsExistInMapz(mapArtist,newSongAddObj,resArtist,list,"Artist");
-                ifKeyIsExistInMapz(mapAlbum,newSongAddObj,resAlbum,list,"Album");
+                ifKeyIsExistInMap(mapArtist,newSongAddObj,resArtist,list,"Artist");
+                ifKeyIsExistInMap(mapAlbum,newSongAddObj,resAlbum,list,"Album");
                 resTitle = new ArrayList();
                 resTitle.add(list.indexOf(newSongAddObj));
                 mapTitle.put(newAddTitle, resTitle);
@@ -146,10 +149,10 @@ public class MusicLib{
         printAllMap(mapTitle);
         printAllMap(mapAlbum);
         printAllMap(mapArtist);
-        System.out.println("press 0 for exit");
+        System.out.println("press __--[ E ]--__ for exit");
         String exit = sc.nextLine();
         if (exit.equalsIgnoreCase("e"))
-            break;                  
+            break;
     }
     }/*addSonginLib end*/
 
@@ -178,27 +181,36 @@ public class MusicLib{
     }/*removeSonginLib end*/
 
     public static void printAllMap(Map < String, List < Integer >> map){
-        System.out.println(map);         
-    }/*printAllMap end*/ 
+        System.out.println(map);
+    }/*printAllMap end*/
 
     public static void ifKeyIsExistInMap(Map < String, List < Integer >> map,SongLib obj,List < Integer > res,List < SongLib > list,String s){
-        if(s.equals("Artist")){
-        if (map.containsKey(obj.getArtist())) {
-        res = map.get(obj.getArtist());
-        res.add(list.indexOf(obj));
-        }else{
-            res = new ArrayList();
-            res.add(list.indexOf(obj));
-            map.put(obj.getArtist(),res);
+        if(s.equals("Artist"))
+        {
+            if (map.containsKey(obj.getArtist())) 
+            {
+                res = map.get(obj.getArtist());
+                res.add(list.indexOf(obj));
             }
-        }else if(s.equals("Album")){
-        if (map.containsKey(obj.getAlbum())) {
-        res = map.get(obj.getAlbum());
-        res.add(list.indexOf(obj));
-        }else{
-            res = new ArrayList();
-            res.add(list.indexOf(obj));
-            map.put(obj.getAlbum(),res);
+            else
+            {
+                res = new ArrayList();
+                res.add(list.indexOf(obj));
+                map.put(obj.getArtist(),res);
+            }
+        }
+        else if(s.equals("Album"))
+        {
+            if (map.containsKey(obj.getAlbum())) 
+            {
+                res = map.get(obj.getAlbum());
+                res.add(list.indexOf(obj));
+            }
+            else
+            {
+                res = new ArrayList();
+                res.add(list.indexOf(obj));
+                map.put(obj.getAlbum(),res);
             }
         }
     }/*ifKeyIsExistInMap end*/
@@ -215,18 +227,34 @@ public class MusicLib{
         }
 
     }
+    public static boolean titleCheck(Map < String, List < Integer >> mapTitle,String str){
+    
+    if(mapTitle.containsKey(str))
+    {
+        System.out.println("\n\t\t *** can't Add same Song twice *** \t\t\n");
+        return false;
+        
+    }else
+    {
+        return true;        
+    }
+
+
+    }/*titleCheck end*/
 
     public static void addSongInAlbm(Map < String, List < Integer >> mapTitle,Map < String, List < Integer >> mapAlbum,Map < String, List < Integer >> mapArtist,List < SongLib > list,List < Integer > resArtist,List < Integer > resAlbum,List < Integer > resTitle){
     System.out.println("Enter the Album ");
       String albumSearch = sc.nextLine();
         if (!mapAlbum.containsKey(albumSearch)) {
             System.out.println("Album is not exist go to [7th --> A] option ");
-            break;
         } else {
-            SongLib songAddObj = new Song_lib();
+            SongLib songAddObj = new SongLib();
 
             System.out.println("Enter the Title ");
-            songAddObj.setTitle(sc.nextLine());
+            String str=sc.nextLine();
+            if(!titleCheck(mapTitle,str)){
+
+            }else{
 
             System.out.println("Enter the Artist ");
             songAddObj.setArtist(sc.nextLine());
@@ -236,15 +264,22 @@ public class MusicLib{
 
             System.out.println("Enter the Year ");
             songAddObj.setYear(sc.nextLine());
-            
+
             songAddObj.setAlbum(albumSearch);
             list.add(songAddObj);
 
             resAlbum = mapAlbum.get(albumSearch);
 
             resAlbum.add(list.indexOf(songAddObj));
-            ifKeyIsExistInMapz(mapArtist,songAddObj,resArtist,list,"Artist");
+            ifKeyIsExistInMap(mapArtist,songAddObj,resArtist,list,"Artist");
+            songAddObj.setTitle(str);
+            
+            resTitle = new ArrayList();
+            resTitle.add(list.indexOf(songAddObj));
+            mapTitle.put(str,resTitle);
+            printAllMap(mapTitle);
         }
+    }
     }/*addSongInAlbm end*/
 
     public static void removeSongInAlbm(Map < String, List < Integer >> mapTitle,Map < String, List < Integer >> mapAlbum,Map < String, List < Integer >> mapArtist,List < SongLib > list,List < Integer > resArtist,List < Integer > resAlbum,List < Integer > resTitle){
@@ -253,13 +288,14 @@ public class MusicLib{
                     searchAlbum = sc.nextLine();
                     if (mapAlbum.containsKey(searchAlbum)) {
                         System.out.println("Enter the  Song Name  for  Delete");
-                            resTitle = mapTitle.get(sc.nextLine());
+                        songDelete=sc.nextLine();
+                            resTitle = mapTitle.get(songDelete);
                             if(resTitle == null || resTitle.size() == 0 || resTitle.contains(null) || resTitle.contains(""))
                             System.out.println("Opps something went wrong!! Give Right Input  ");
                             else
                             for (Integer k: resTitle) {
                                 SongLib songObjRemoveAlbum = list.get(k);
-                                if (songObjRemoveAlbum.getTitle().equalsIgnoreCase(songDelete) && songObjRemoveAlbum.getAlbum().equalsIgnoreCase(searchAlbum)) 
+                                if (songObjRemoveAlbum.getTitle().equalsIgnoreCase(songDelete) && songObjRemoveAlbum.getAlbum().equalsIgnoreCase(searchAlbum))
                                 {
                                     resAlbum = mapAlbum.get(songObjRemoveAlbum.getAlbum());
                                     resAlbum.remove(k);
@@ -274,7 +310,6 @@ public class MusicLib{
                             }/*loop end*/
                         }else {
                         System.out.println("Album is not exist go to [7th --> A] option ");
-                        break;
                     }
     }/*removeSongInAlbm end*/
 
@@ -300,7 +335,7 @@ public class MusicLib{
             choice = sc.next();
             sc.nextLine();
             switch (choice) {
-                case "1": 
+                case "1":
                 printListOfAllSong(list);
                 break;
                 case "2":
