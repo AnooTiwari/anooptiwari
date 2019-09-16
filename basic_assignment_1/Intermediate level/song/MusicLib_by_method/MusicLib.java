@@ -18,7 +18,10 @@ class SongLib {
         this.duration = duration;
         this.year = year;
     }
+<<<<<<< HEAD
     public SongLib(){}
+=======
+>>>>>>> 03d7ff5edf84d85c67230244440e02d9f6163492
 
     public void setTitle(String title) {
         this.title = title;
@@ -74,7 +77,11 @@ public class MusicLib{
 
     public static  void editInfo(List < Integer > res,List < SongLib > list,Map < String, List < Integer >> map,String s){
     System.out.println("Enter the old"+s);
+<<<<<<< HEAD
     String search=sc.nextLine();
+=======
+    String search;
+>>>>>>> 03d7ff5edf84d85c67230244440e02d9f6163492
     res = map.get(search);
     for (Integer k: res) {
         SongLib editObj = list.get(k);
@@ -107,9 +114,13 @@ public class MusicLib{
 
         if(s.equals("Album"))
         res = map.get(sc.nextLine());
+<<<<<<< HEAD
         if(res == null || res.size() == 0 || res.contains(null) || res.contains(""))
         System.out.println("Opps something went wrong!! Give Right Input ");    
         else
+=======
+
+>>>>>>> 03d7ff5edf84d85c67230244440e02d9f6163492
         for (Integer k: res) {
         SongLib objList = list.get(k);
         System.out.println(objList.getTitle());
@@ -272,12 +283,15 @@ public class MusicLib{
 
             resAlbum.add(list.indexOf(songAddObj));
             ifKeyIsExistInMap(mapArtist,songAddObj,resArtist,list,"Artist");
+<<<<<<< HEAD
             songAddObj.setTitle(str);
             
             resTitle = new ArrayList();
             resTitle.add(list.indexOf(songAddObj));
             mapTitle.put(str,resTitle);
             printAllMap(mapTitle);
+=======
+>>>>>>> 03d7ff5edf84d85c67230244440e02d9f6163492
         }
     }
     }/*addSongInAlbm end*/
