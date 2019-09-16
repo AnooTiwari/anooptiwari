@@ -115,7 +115,7 @@ public class Song {
                     titleSearch = sc.nextLine();
                     resTitle = mapTitle.get(titleSearch); /*Rerun the index value of related title*/
                     for (Integer s: resTitle) {
-                        Song_lib songObjTitle = list.get(s);
+                        Song_lib songObjTitle  = list.get(s);
                         System.out.println("\t" + songObjTitle.getTitle() + "\t\t" + songObjTitle.getAlbum() + "\t\t" + songObjTitle.getYear() + "\t\t" + songObjTitle.getArtist() + "\t" + songObjTitle.getDuration());
                         System.out.println("Enter the New Title ");
                         newTitle = sc.nextLine();
@@ -437,7 +437,7 @@ public class Song {
                 } else if (choiceSong.equalsIgnoreCase("R")) {
                     System.out.println("\t\t\t\t\t**** Song Deletion Menu****");
                     String searchAlbum, songDelete;
-                    System.out.println("Enter the Album Name -> Song Name  for  Delete");
+                    System.out.println("Enter the Album Name ");
                     searchAlbum = sc.nextLine();
                     if (mapAlbum.containsKey(searchAlbum)) {
                         System.out.println("Enter the  Song Name  for  Delete");
