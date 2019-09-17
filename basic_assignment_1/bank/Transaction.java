@@ -2,14 +2,12 @@ import java.util.Date;
 
 public class Transaction {
 
-    //instance variables decleared
     private Date date;
     private char type;
     private double amount;
     private double accBalance;
     private String description;
 
-    //Constructor
     public Transaction(Date date, char type, double accBalance, String description) {
         this.accBalance = accBalance;
         this.date = new Date();
@@ -18,7 +16,6 @@ public class Transaction {
         this.description = description;
     }
 
-//getters and setters method decleared
     public Date getDate() {
         return date;
     }
@@ -58,8 +55,6 @@ public class Transaction {
     public String setDescription() {
         return description;
     }
-    //Tostring method 
-    @Override
     public String toString() {  
         return "\n"+new Date()      + "Type : " + type     +      "Account Balance " + accBalance + "Description " + description;
     }

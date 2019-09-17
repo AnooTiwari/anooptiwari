@@ -1,9 +1,8 @@
 import java.util.*;
-public class Account_Records_Test {
+public class BankSys {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
 
         ArrayList Savings =new ArrayList();
         ArrayList Chequing=new ArrayList();
@@ -17,40 +16,43 @@ public class Account_Records_Test {
         double rate;
         String accNum;       
         double total;
+        int savingAccNum=202216400;
+        int chequingAccNum=302216400;
 
-
+        /*Making object of the Saving Account and Current Account*/
         SavingsAccount s1 = new SavingsAccount();
         ChequingAccount c1 = new ChequingAccount();
 
 
 
         System.out.println("\n" + "Please select one of the following options");
-        System.out.println("|  [ O ] : To Open Account       |");
-        System.out.println("|  [ D ] : To Make A Deposit     |");
-        System.out.println("|  [ W ] : To Make A Withdraw    |");
-        System.out.println("|  [ I ] : To Pay Interest       |");
-        System.out.println("|  [ T ] : To View Transactions  |");
-        System.out.println("|  [ Q ] : To Quit               |");
+        System.out.println("|  [ 1 ] : To Open Account       |");
+        System.out.println("|  [ 2 ] : To Make A Deposit     |");
+        System.out.println("|  [ 3 ] : To Make A Withdraw    |");
+        System.out.println("|  [ 4 ] : To Pay Interest       |");
+        System.out.println("|  [ 5 ] : To View Transactions  |");
+        System.out.println("|  [ 0 ] : To Quit               |");
         type = input.next().trim().toUpperCase().charAt(0);
 
-        while (type != 'Q') {
+        while (type != '0') {
 
-            if (type == 'O') {
-                System.out.print("Please select the type of account you will like to open [ S ]-Saving or [ C ]-Checking :");
-                selection = input.next().trim().toUpperCase().charAt(0);
-                if (selection == 'S') {
-                    System.out.print("Please enter Account Holder Name");
-                    name=input.next();
+            if (type == '1') {
+               
+                    System.out.print("Please enter Account Holder Name  ");
+                    input.nextLine();
+                    name=input.nextLine();
+                    System.out.print("Please select the type of account open [ S ]  Saving  & [ C ] Checking :");
+                    selection = input.next().trim().toUpperCase().charAt(0);
+                    if (selection == 'S') {
 
-                    System.out.print("Please enter a Savings Account Number : ");
-                    accNum = input.next();
+                     System.out.print("Savings Account Number : "+(savingAccNum+1)+"  \n");
+                    accNum = Integer.toString (savingAccNum+1);
+                    savingAccNum++;
                     Savings.add(accNum);
 
                     System.out.print("Please enter starting balance :$");
                     balance = input.nextDouble();
                     s1.setBalance(balance);
-
-
 
                     System.out.print("Please enter the courrent interest rate :");
                     rate = input.nextDouble();
@@ -58,20 +60,18 @@ public class Account_Records_Test {
                     Savings.add(accNum);
 
 
-
-
-
                 } else if (selection == 'C') {
-                    System.out.print("Please enter a Chequing Account Number :");
-                    accNum = input.next();
+                    System.out.print("Chequing Account Number :"+(chequingAccNum+1));
+                    accNum = Integer.toString(chequingAccNum+1);
                     Chequing.add(accNum);
-                    System.out.print("Please enter starting balance :$");
+                    chequingAccNum++;
+                    System.out.println("Please enter starting balance :$");
                     balance = input.nextDouble();
                     c1.setBalance(balance);
                 }
 
 
-            } else if (type == 'D') {
+            } else if (type == '2') {
                 System.out.print("Please enter the account number you wish to make a deposit to :");
                 accNum= input.next();
 
@@ -85,7 +85,7 @@ public class Account_Records_Test {
                     c1.deposit(total);
                 }
 
-            } else if (type == 'W') {
+            } else if (type == '3') {
                 System.out.print("Please enter an account number  :");
                 accNum = input.next();
                 if (Savings.contains(accNum)) {
@@ -97,7 +97,7 @@ public class Account_Records_Test {
                     total = input.nextDouble();
                     c1.withdraw(total);
                 }
-            } else if (type == 'I') {
+            } else if (type == '4') {
                 System.out.print("Please enter your account");
                 accNum = input.next();
                 if (Savings.contains(accNum)) {
@@ -105,7 +105,7 @@ public class Account_Records_Test {
                 } else {
                     System.out.print("Sorry This account isnt a Savings Account");
                 }
-            } else if (type == 'T') {
+            } else if (type == '5') {
                 System.out.print("Please enter a account number");
                 accNum = input.next();
                 if (Savings.contains(accNum)) {
@@ -120,17 +120,17 @@ public class Account_Records_Test {
                 }
 
             }
-            else if(type=='Q'){
+            else if(type=='0'){
                 break;
             }
 
         System.out.println("\n" + "Please select one of the following options");
-        System.out.println("|  [ O ] : To Open Account       |");
-        System.out.println("|  [ D ] : To Make A Deposit     |");
-        System.out.println("|  [ W ] : To Make A Withdraw    |");
-        System.out.println("|  [ I ] : To Pay Interest       |");
-        System.out.println("|  [ T ] : To View Transactions  |");
-        System.out.println("|  [ Q ] : To Quit               |");
+        System.out.println("|  [ 1 ] : To Open Account       |");
+        System.out.println("|  [ 2 ] : To Make A Deposit     |");
+        System.out.println("|  [ 3 ] : To Make A Withdraw    |");
+        System.out.println("|  [ 4 ] : To Pay Interest       |");
+        System.out.println("|  [ 5 ] : To View Transactions  |");
+        System.out.println("|  [ 0 ] : To Quit               |");
         type = input.next().trim().toUpperCase().charAt(0);
         }
 

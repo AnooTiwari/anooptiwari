@@ -2,16 +2,16 @@ import  java.util.Date;
 import java.util.ArrayList;
 public abstract class Account {
 
-    //instance variables decleared
+   
     private String cName;
     private String accNum;
     private double accBalance;
    ArrayList transactions=new ArrayList();
 
-   //default constructor 
+  
     public Account(){
     }
-    //Constructor
+  
 
     public Account(String cName,String accNum,double  accBalance){
         this.cName=cName;
@@ -19,7 +19,7 @@ public abstract class Account {
         this.accBalance=accBalance;
     }
 
-    //getters and setter method
+   
     public String setName(){
         return this.cName;
     }    
@@ -27,10 +27,6 @@ public abstract class Account {
     public String getCname(){
         return this.cName;
     }
-
-    // public String SetAccnum(String accNumber){
-    //     return this.accNum;
-    // }
 
     public String GetAccNum(){
         return this.accNum;
@@ -43,15 +39,15 @@ public abstract class Account {
     public double getBalance(){
         return this.accBalance;
     }
-    //end of getters an setters method
+   
 
-    //toString method decleared
+    
     @Override
     public String toString(){
         return "Customer Name"+this.cName   +"Account Number:"+this.accNum; 
     }
 
-    //beginning of withdrawal method
+    
     public void  withdraw(double total){
         if(accBalance<total){
             System.out.print("Not enough funds sorry your current balance is "+accBalance);
@@ -64,19 +60,11 @@ public abstract class Account {
         transactions.add(t1);
 
     }
-    //end of withdrawal method
-
-
-    //beginning of deposit method
+       
    public void deposit(double total){
        this.accBalance += total;
        System.out.printf("\n"+total+"Your Balance is"+ this.accBalance);
         Transaction t1 = new Transaction(new Date(), 'D', this.accBalance, "Deposit Made");
         transactions.add(t1);
-
-
-   }
-   //end of deposit method
-
-
+    }
 }

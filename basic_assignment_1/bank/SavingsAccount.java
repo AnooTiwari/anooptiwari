@@ -1,19 +1,15 @@
 import java.util.Date;
 
 public class SavingsAccount extends Account {
-// instance variables decleared
     private double intRate;
 
-    //default constrictor
     public SavingsAccount(){
       intRate=0;  
     }
-    //main construtor
     public SavingsAccount(String cName, String accNum, double accBalance, double intRate) {
         super(cName,accNum, accBalance);
         this.intRate = intRate;
     }
-    //getters and setters method decleared
     public double setRate(double rate) {
         return intRate=rate/100;
     }
@@ -21,9 +17,6 @@ public class SavingsAccount extends Account {
     public double getRate() {
         return intRate;
     }
-
-
-    //payInterest method decleared
     public void payInterest() {
         double accAmount=getBalance();
         double balance=0;
@@ -35,11 +28,6 @@ public class SavingsAccount extends Account {
         transactions.add(t1);
 
     }
-    //Withdrawal method override
-    @Override
-     /*@Override @Override annotation informs the compiler that the element is meant to override 
-    an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance. 
-    While it is not required to use this annotation when overriding a method, it helps to prevent errors.*/
     public void withdraw(double total) {
         double accAmount = getBalance();
         double balance = 0;
@@ -57,11 +45,6 @@ public class SavingsAccount extends Account {
 
 
     }
-    //Deposit method override
-    @Override
-     /*@Override @Override annotation informs the compiler that the element is meant to override 
-    an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance. 
-    While it is not required to use this annotation when overriding a method, it helps to prevent errors.*/
     public void deposit(double total) {
         double balance;
         double accAmount = getBalance();
@@ -72,11 +55,6 @@ public class SavingsAccount extends Account {
         transactions.add(t1);
         
     }
-
-    @Override
-     /*@Override @Override annotation informs the compiler that the element is meant to override 
-    an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance. 
-    While it is not required to use this annotation when overriding a method, it helps to prevent errors.*/
     public String toString() {
         return this.toString() + "Interest Rate: " + intRate;
     }
