@@ -28,9 +28,9 @@ public abstract class Account {
         return this.cName;
     }
 
-    public String SetAccnum(String accNumber){
-        return this.accNum;
-    }
+    // public String SetAccnum(String accNumber){
+    //     return this.accNum;
+    // }
 
     public String GetAccNum(){
         return this.accNum;
