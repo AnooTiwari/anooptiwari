@@ -4,7 +4,7 @@ public abstract class Account {
 
    
     private String cName;
-    private String accNum;
+    private int accNum;
     private double accBalance;
    ArrayList transactions=new ArrayList();
 
