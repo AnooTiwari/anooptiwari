@@ -29,7 +29,7 @@ public class ChequingAccount extends Account {
         if (amount >balance &&  amount>  overDraft) {
             System.out.println("Sorry cannot withdraw  that amount choose a lower amount ");
         } 
-        else if((accAmount-total)>10000){
+        else if((accAmount-amount)>10000){
               balance= accAmount-= amount;
               setBalance(balance);
 
@@ -45,7 +45,7 @@ public class ChequingAccount extends Account {
     public void deposit(double amount) {
         double accAmount = getBalance();
         double balance=0;
-         if(total>0){
+         if(amount>0){
         balance=accAmount += amount;
         setBalance(balance);
         System.out.printf("Your deposit of :Rs " + amount + " was successful your new account balance is :Rs %.2f",setBalance(balance));

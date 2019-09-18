@@ -41,10 +41,7 @@ public abstract class Account {
     }
    
 
-    // public String toString(){
-    //     return "Customer Name"+this.cName   +"Account Number:"+this.accNum; 
-    // }
-
+   
     
     public void  withdraw(double total){
         if(accBalance<total){

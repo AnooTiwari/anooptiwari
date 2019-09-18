@@ -66,7 +66,4 @@ public class SavingsAccount extends Account {
         }
         
     }
-    // public String toString() {
-    //     return this.toString() + "Interest Rate: " + intRate;
-    // }
 }
