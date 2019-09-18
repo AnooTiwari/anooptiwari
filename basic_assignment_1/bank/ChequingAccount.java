@@ -7,7 +7,7 @@ public class ChequingAccount extends Account {
     }
 
 
-    public ChequingAccount(String cName, String accNum, double accBalance) {
+    public ChequingAccount(String cName, int accNum, double accBalance) {
         super(cName, accNum, accBalance);/*using account class varible */
 
     }

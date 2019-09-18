@@ -6,7 +6,7 @@ public class SavingsAccount extends Account {
     public SavingsAccount(){
       intRate=0;  
     }
-    public SavingsAccount(String cName, String accNum, double accBalance, double intRate) {
+    public SavingsAccount(String cName, int accNum, double accBalance, double intRate) {
         super(cName,accNum, accBalance);
         this.intRate = intRate;
     }

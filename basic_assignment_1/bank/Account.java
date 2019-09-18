@@ -13,7 +13,7 @@ public abstract class Account {
     }
   
 
-    public Account(String cName,String accNum,double  accBalance){
+    public Account(String cName,int accNum,double  accBalance){
         this.cName=cName;
         this.accNum=accNum;
         this.accBalance=accBalance;
@@ -28,7 +28,7 @@ public abstract class Account {
         return this.cName;
     }
 
-    public String GetAccNum(){
+    public int GetAccNum(){
         return this.accNum;
     }
 
