@@ -7,22 +7,19 @@ public class BankSys {
         ArrayList Savings =new ArrayList();
         ArrayList Chequing=new ArrayList();
 
-
-
         String name;
         char type;
         char selection;
         double balance;
         double rate;
-        String accNum;       
+        int accNum;       
         double total;
-        int savingAccNum=202216400;
-        int chequingAccNum=302216400;
+        int savingAccNum=2016400;
+        int chequingAccNum=3016400;
 
         /*Making object of the Saving Account and Current Account*/
         SavingsAccount s1 = new SavingsAccount();
         ChequingAccount c1 = new ChequingAccount();
-
 
 
         System.out.println("\n" + "Please select one of the following options");
@@ -34,7 +31,7 @@ public class BankSys {
         System.out.println("|  [ 0 ] : To Quit               |");
         type = input.next().trim().toUpperCase().charAt(0);
 
-        while (type != '0') {
+        while (type != '0') {/*Wile true concept remove*/
 
             if (type == '1') {
                
@@ -45,8 +42,8 @@ public class BankSys {
                     selection = input.next().trim().toUpperCase().charAt(0);
                     if (selection == 'S') {
 
-                     System.out.print("Savings Account Number : "+(savingAccNum+1)+"  \n");
-                    accNum = Integer.toString (savingAccNum+1);
+                    System.out.print("Savings Account Number : "+(savingAccNum+1)+"  \n");
+                    accNum =  (savingAccNum+1);
                     savingAccNum++;
                     Savings.add(accNum);
 
@@ -61,8 +58,8 @@ public class BankSys {
 
 
                 } else if (selection == 'C') {
-                    System.out.print("Chequing Account Number :"+(chequingAccNum+1));
-                    accNum = Integer.toString(chequingAccNum+1);
+                    System.out.println("Chequing Account Number :"+(chequingAccNum+1));
+                    accNum = (chequingAccNum+1);
                     Chequing.add(accNum);
                     chequingAccNum++;
                     System.out.println("Please enter starting balance :$");
@@ -73,10 +70,10 @@ public class BankSys {
 
             } else if (type == '2') {
                 System.out.print("Please enter the account number you wish to make a deposit to :");
-                accNum= input.next();
+                accNum= input.nextInt();
 
                 if (Savings.contains(accNum)) {
-                    System.out.print("Please enter how much you will like to deposit to your Savings Account :$");
+                    System.out.print("Please enter how much you want to deposit to your Savings Account :$");
                     total = input.nextDouble();
                     s1.deposit(total);
                 } else if (Chequing.contains(accNum)) {
@@ -87,7 +84,7 @@ public class BankSys {
 
             } else if (type == '3') {
                 System.out.print("Please enter an account number  :");
-                accNum = input.next();
+                accNum = input.nextInt();
                 if (Savings.contains(accNum)) {
                     System.out.print("please enter the amount you wish to withdraw from your Saving Account");
                     total = input.nextDouble();
@@ -99,7 +96,7 @@ public class BankSys {
                 }
             } else if (type == '4') {
                 System.out.print("Please enter your account");
-                accNum = input.next();
+                accNum = input.nextInt();
                 if (Savings.contains(accNum)) {
                     s1.payInterest();
                 } else {
@@ -107,7 +104,7 @@ public class BankSys {
                 }
             } else if (type == '5') {
                 System.out.print("Please enter a account number");
-                accNum = input.next();
+                accNum = input.nextInt();
                 if (Savings.contains(accNum)) {
                     System.out.printf("\n" + "Transaction History for Account :%s", accNum);
                     System.out.println(s1.transactions.toString());
