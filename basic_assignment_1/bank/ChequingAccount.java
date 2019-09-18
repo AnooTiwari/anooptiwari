@@ -29,24 +29,30 @@ public class ChequingAccount extends Account {
         if (amount >balance &&  amount>  overDraft) {
             System.out.println("Sorry cannot withdraw  that amount choose a lower amount ");
         } 
-        else {
+        else if((accAmount-total)>10000){
               balance= accAmount-= amount;
               setBalance(balance);
 
         }
-        System.out.printf(amount+ "Your new balance is %.2f", setBalance(balance));
-        Transaction t1 = new Transaction(new Date()     , 'W',  setBalance(balance), "Withdrawal Made:");
+        else
+        System.out.println("you should Maintain minimum balance [ Rs 10000 /- ]");
+
+        System.out.printf(amount+ "Your new balance is %.2f", getBalance());
+        Transaction t1 = new Transaction(new Date()     , 'W',  getBalance(), "Withdrawal Made:");
         transactions.add(t1);
     }
 
     public void deposit(double amount) {
         double accAmount = getBalance();
         double balance=0;
+         if(total>0){
         balance=accAmount += amount;
         setBalance(balance);
         System.out.printf("Your deposit of :Rs " + amount + " was successful your new account balance is :Rs %.2f",setBalance(balance));
         Transaction t1 = new Transaction(new Date()     , 'D'    ,  setBalance(balance),      "Deposit Made:");
         transactions.add(t1);
+    }else
+    System.out.println("Opps! Please give Correct Ammout");
     }
 
 
