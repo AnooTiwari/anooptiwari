@@ -39,27 +39,5 @@ public abstract class Account {
     public double getBalance(){
         return this.accBalance;
     }
-   
-
-   
-    
-    public void  withdraw(double total){
-        if(accBalance<total){
-            System.out.print("Not enough funds sorry your current balance is "+accBalance);
-        }
-        else{
-        this.accBalance -= total;
-        System.out.print("\n"+"Your Balance is"+ this.accBalance);}
-
-        Transaction t1 = new Transaction(new Date(), 'W', this.accBalance, "Withdrawal Made");
-        transactions.add(t1);/*Adding tranjection class object*/
-
-    }
-       
-   public void deposit(double total){
-       this.accBalance += total;
-       System.out.printf("\n"+total+"Your Balance is"+ this.accBalance);
-        Transaction t1 = new Transaction(new Date(), 'D', this.accBalance, " Deposit Made");
-        transactions.add(t1);
-    }
+  
 }
