@@ -11,12 +11,12 @@ public class SavingsAccount extends Account {
         this.intRate = intRate;
     }
    
-   public double setRate(double rate) {
+   public double getRate(double rate) {
         return intRate=rate/100;
     }
-    public double getRate() {
-        return intRate;
-    }
+    //public double getRate() {
+      //  return intRate;
+    //}
     
     public void payInterest() {
         double accAmount=getBalance();

@@ -15,28 +15,6 @@ public class ChequingAccount extends Account {
         /*using account class varible */
     }
 
-    // public String toString() {
-    //     return this.toString() + "Over Draft Limit :" + overDraft;
-    // }
-
-    // public void withdraw(double amount) {
-    //     double accAmount = getBalance();
-    //     double balance = 0;
-    //     if (amount >accAmount &&  amount>  overDraft) {
-    //         System.out.println("Sorry cannot withdraw  that amount choose a lower amount ");
-    //     } 
-    //     else if((accAmount-amount)>10000){
-    //           balance= accAmount-= amount;
-    //           setBalance(balance);
-
-    //     }
-    //     else
-    //     System.out.println("you should Maintain minimum balance [ Rs 10000 /- ]");
-
-    //     System.out.printf(amount+ "Your new balance is %.2f", getBalance());
-    //     Transaction t1 = new Transaction(new Date()     , 'W',  getBalance(), "Withdrawal Made:");
-    //     transactions.add(t1);
-    // }
 
     public void deposit(double amount) {
         double accAmount = getBalance();
