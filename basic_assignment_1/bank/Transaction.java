@@ -12,7 +12,6 @@ public class Transaction {
         this.accBalance = accBalance;
         this.date = new Date();
         this.type = type;
-
         this.description = description;
     }
 
@@ -20,40 +19,40 @@ public class Transaction {
         return date;
     }
 
-    public Date setDate() {
-        return date;
+    public void setDate() {
+    this.date = new Date();
     }
 
     public char getType() {
         return type;
     }
 
-    public char setType() {
-        return type;
+    public void setType() {
+        this.type = type;
     }
 
     public double getBalance() {
         return accBalance;
     }
 
-    public double setBalance() {
-        return accBalance;
+    public void setBalance() {
+    this.accBalance = accBalance;
     }
 
     public double getAmount() {
         return amount;
     }
 
-    public double setAmount() {
-        return amount;
+    public void setAmount() {
+      
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String setDescription() {
-        return description;
+    public void setDescription() {
+     this.description = description;
     }
     public String toString() {  
         return "\n"+new Date()      + " Type : " + type +" Account Balance " + accBalance + " Description " + description;

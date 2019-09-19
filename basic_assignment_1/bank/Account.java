@@ -45,10 +45,10 @@ public  class Account {
     if(accBalance<total){
         System.out.print("Not enough funds sorry your current balance is "+accBalance);
     }
-    else if(type=='c'&&(this.accBalance-total)>=10000){        
+    else if(type=='c'&&(this.accBalance-total)>=10000&&total>1){        
     flag=true;
     }
-    else if(type=='s'&&(this.accBalance-total)>=500 && total<=35000)
+    else if(type=='s'&&(this.accBalance-total)>=500 && total<=35000&&total>1)
     {
         flag=true;
     }
