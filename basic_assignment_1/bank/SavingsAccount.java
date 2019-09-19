@@ -10,13 +10,13 @@ public class SavingsAccount extends Account {
         super(cName,accNum, accBalance);
         this.intRate = intRate;
     }
-    public double setRate(double rate) {
-        return intRate=rate/100;
-    }
-
+    public void setRate(double rate) {
+         this.intRate = intRate; 
+   }
     public double getRate() {
         return intRate;
     }
+    
     public void payInterest() {
         double accAmount=getBalance();
         double balance=0;
@@ -28,29 +28,29 @@ public class SavingsAccount extends Account {
         transactions.add(t1);
 
     }
-    public void withdraw(double total) {
-        double accAmount = getBalance();
-        double balance = 0;
-        double limit = 35000;
+    // public void withdraw(double total) {
+    //     double accAmount = getBalance();
+    //     double balance = 0;
+    //     double limit = 35000;
 
 
-        if (accAmount < total|| total>35000) {/*I can split this in 2 different conduction if you want*/
-            System.out.printf("Not enough funds your main account balance is :Rs %.2f \n", accAmount);
-            System.out.println("______________________________OR_________________________________");
-            System.out.println("Exceed the Withdrawal Limit :"+limit);
-        } else if((accAmount-total)>499){
-                balance=accAmount -= total;
+    //     if (accAmount < total|| total>35000) {/*I can split this in 2 different conduction if you want*/
+    //         System.out.printf("Not enough funds your main account balance is :Rs %.2f \n", accAmount);
+    //         System.out.println("______________________________OR_________________________________");
+    //         System.out.println("Exceed the Withdrawal Limit :"+limit);
+    //     } else if((accAmount-total)>499){
+    //             balance=accAmount -= total;
 
-                setBalance(balance);
-            System.out.printf("Your withdrawal of :$" + total + " was successful your new  account balance is :Rs %.2f",getBalance());
-        }else
-        System.out.println("you should Maintain minimum balance [ Rs 500 /- ]");
+    //             setBalance(balance);
+    //         System.out.printf("Your withdrawal of :$" + total + " was successful your new  account balance is :Rs %.2f",getBalance());
+    //     }else
+    //     System.out.println("you should Maintain minimum balance [ Rs 500 /- ]");
 
-        Transaction t1 = new Transaction(new Date()     ,    'W'     ,       getBalance(), "Withdrawal Made");
-        transactions.add(t1);
+    //     Transaction t1 = new Transaction(new Date()     ,    'W'     ,       getBalance(), "Withdrawal Made");
+    //     transactions.add(t1);
 
 
-    }
+    // }
     public void deposit(double total) {
         double balance;
         double accAmount = getBalance();

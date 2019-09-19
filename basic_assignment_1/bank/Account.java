@@ -1,6 +1,6 @@
 import  java.util.Date;
 import java.util.ArrayList;
-public abstract class Account {
+public  class Account {
 
    
     private String cName;
@@ -20,8 +20,8 @@ public abstract class Account {
     }
 
    
-    public String setName(){
-        return this.cName;
+    public void setName(String cName){
+        this.cName=cName;
     }    
 
     public String getCname(){
@@ -38,6 +38,30 @@ public abstract class Account {
 
     public double getBalance(){
         return this.accBalance;
+    }
+    
+    public void  withdraw(double total,char type){
+        boolean flag=false;
+    if(accBalance<total){
+        System.out.print("Not enough funds sorry your current balance is "+accBalance);
+    }
+    else if(type=='c'&&(this.accBalance-total)>=10000){        
+    flag=true;
+    }
+    else if(type=='s'&&(this.accBalance-total)>=500 && total<=35000)
+    {
+        flag=true;
+    }
+    if(flag)
+    {
+    this.accBalance -= total;
+    System.out.print("\n"+"Your Balance is"+ this.accBalance);
+    }
+    else
+    System.out.print("Transaction Fail");
+    Transaction t1 = new Transaction(new Date(), 'W', this.accBalance, "Withdrawal Made");
+    transactions.add(t1);/*Adding tranjection class object*/
+
     }
   
 }
