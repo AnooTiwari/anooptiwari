@@ -6,6 +6,7 @@ public class ChequingAccount extends Account {
     private ChequingAccount() {}
     
     public static ChequingAccount getObject(){
+        
         return obj;
     }
 

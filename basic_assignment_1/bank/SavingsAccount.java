@@ -8,15 +8,16 @@ public class SavingsAccount extends Account {
     }
     public SavingsAccount(String cName, int accNum, double accBalance, double intRate) {
         super(cName,accNum, accBalance);
-        this.intRate = intRate;
+        this.intRate = Math.abs(intRate);
     }
    
-   public double getRate(double rate) {
-        return intRate=rate/100;
+   public double setRate(double rate) {
+        return intRate=(Math.abs(rate)/100);
     }
-    //public double getRate() {
-      //  return intRate;
-    //}
+
+    public double getRate() {
+        return Math.abs(intRate);
+    }
     
     public void payInterest() {
         double accAmount=getBalance();

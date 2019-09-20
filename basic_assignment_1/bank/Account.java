@@ -20,8 +20,15 @@ public  class Account {
     }
 
    
-    public void setName(String cName){
+    public boolean setName(String cName){
+        if ((cName != null)&& (!cName.equals(""))&& (cName.matches("^[a-zA-Z]*$"))){
         this.cName=cName;
+        return true;    
+        }
+        else{
+        System.out.println("\t\t****Name doesn't Contains the Special Character or Number****");
+        return false;            
+        }        
     }    
 
     public String getCname(){
