@@ -43,17 +43,13 @@ public class BankSystem {
         		System.out.println("Enter the Opening Amount");
         		while (true)
 	            	try {
-	                balance = Integer.parseInt(sc.nextLine());
+	                balance = Double.parseDouble(sc.nextLine());
+	        		flag=s1.setBalance(balance,'s');
 	                break;
 	            	} catch (NumberFormatException nfe) {
 	                System.out.print("Try again: ");
 	            	}
-        		if(balance>499)
-        		s1.setBalance(balance);
-        		else{
-        		System.out.println("Minimum Account Opening balance 500/-");
-        		break;
-        		}
+	            if(!flag)break;
         		accNum=savingAccNum++;
 				System.out.println("Congratulation Your Saving - Account Number is [ "+accNum+" ]");
 				System.out.println("Enter the Interest Rate");

@@ -39,8 +39,15 @@ public  class Account {
         return this.accNum;
     }
 
-    public double setBalance(double balance){
-        return this.accBalance=balance;
+    public boolean setBalance(double balance, char type){
+        if(type=='s'||type=='S'&& balance>499){
+        this.accBalance=balance;
+        return true;
+        }
+        else{
+        System.out.println("Minimum Account Opening balance 500/-");
+        return false;
+        }
     }
 
     public double getBalance(){
