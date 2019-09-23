@@ -41,19 +41,26 @@ public class BankSystem {
         		flag= s1.setName(sc.nextLine()); 
         		if(!flag)break;
         		System.out.println("Enter the Opening Amount");
-        		while (true)
+            		while (true)
 	            	try {
 	                balance = Double.parseDouble(sc.nextLine());
-	        		flag=s1.setBalance(balance,'s');
-	                break;
+	        		double x=s1.setBalance(balance);
+                    if(x>0)break;
+                    else System.out.println("Opening Amount Should be Minimum 500/-");
 	            	} catch (NumberFormatException nfe) {
 	                System.out.print("Try again: ");
 	            	}
-	            if(!flag)break;
         		accNum=savingAccNum++;
 				System.out.println("Congratulation Your Saving - Account Number is [ "+accNum+" ]");
 				System.out.println("Enter the Interest Rate");
-				s1.setRate(sc.nextDouble());
+                    while (true)
+                        try {
+                        rate = Double.parseDouble(sc.nextLine());
+                        s1.setRate(rate);
+                        break;
+                        } catch (NumberFormatException nfe) {
+                        System.out.print("Try again Mismatch input: ");
+                        }
 				Savings.add(accNum);
 				list.add(s1);
 				map.put(accNum,list.indexOf(s1));
@@ -61,9 +68,20 @@ public class BankSystem {
         		break;
         		case 'C':
         		System.out.println("Enter the Firm Name");
-        		name=sc.nextLine();
-        		System.out.println("Enter the Opening Amount");
-        		balance=sc.nextDouble();
+                name=sc.nextLine();
+                    while(!name.matches("[a-zA-Z]+"))
+                    {
+                    System.out.println("Please enter a valid name!");
+                    name = sc.nextLine();
+                    }
+                System.out.println("Enter the Opening Amount");
+                while (true)
+                        try {
+                        balance = Double.parseDouble(sc.nextLine());
+                        break;
+                        } catch (NumberFormatException nfe) {
+                        System.out.print("Try again: ");
+                        }
         		if(balance>9999)
         		flag=true;
         		else{
@@ -82,53 +100,109 @@ public class BankSystem {
         }
         else if (type == '2') {
         	System.out.print("Please enter the Account-Number :");
-            accNum= sc.nextInt();
+            while (true)
+                try {
+                accNum = Integer.parseInt(sc.nextLine());
+                break;
+                } catch (NumberFormatException nfe) {
+                System.out.print("Try again Mismatch input: ");
+                }
              if (Savings.contains(accNum)) {
                     System.out.print("Please enter Amount to deposit to your [ Savings Account ] :Rs ");
-                    total = sc.nextDouble();
+                    while (true)
+                        try {
+                        total = Double.parseDouble(sc.nextLine());
+                        break;
+                        } catch (NumberFormatException nfe) {
+                        System.out.print("Try again: ");
+                        }
                     int index=map.get(accNum);
                     SavingsAccount sobj=(SavingsAccount)list.get(index);
                     sobj.deposit(total);
                 }
                  else if (Chequing.contains(accNum)) {
                     System.out.print("Please enter Amount to deposit to your [ Current Account ]:Rs");
-                    total = sc.nextDouble();
+                    while (true)
+                    try {
+                        total = Double.parseDouble(sc.nextLine());
+                        break;
+                        } catch (NumberFormatException nfe) {
+                        System.out.print("Try again: ");
+                        }
                     int index=map.get(accNum);
                     ChequingAccount cobj=(ChequingAccount)list.get(index);
                     cobj.deposit(total);
                 }
+                else
+                {
+                    System.out.println("Account-Number doesn't exist");
+                }
         }
         else if (type == '3') {
         	System.out.print("Please enter an account number  :");
-                accNum = sc.nextInt();
+                    while (true)
+                    try {
+                    accNum = Integer.parseInt(sc.nextLine());
+                    break;
+                    } catch (NumberFormatException nfe) {
+                    System.out.print("Try again Mismatch input: ");
+                    }
                 if (Savings.contains(accNum)) {
                     System.out.print("please enter the amount you wish to withdraw from your [ Saving Account ]");
-                    total = sc.nextDouble();
+                     while (true)
+                        try {
+                        total = Double.parseDouble(sc.nextLine());
+                        break;
+                        } catch (NumberFormatException nfe) {
+                        System.out.print("Try again: ");
+                        }
                     int index=map.get(accNum);
                     SavingsAccount sWobj=(SavingsAccount)list.get(index);
                     sWobj.withdraw(total,'s');
                 } else if (Chequing.contains(accNum)) {
                     System.out.print("Please enter the amount from your Chequing Account");
-                    total = sc.nextDouble();
+                    while (true)
+                        try {
+                        total = Double.parseDouble(sc.nextLine());
+                        break;
+                        } catch (NumberFormatException nfe) {
+                        System.out.print("Try again : ");
+                        }
                     int index=map.get(accNum);
                     ChequingAccount cWobj=(ChequingAccount)list.get(index);
                     cWobj.withdraw(total,'c');
                 }
+                else
+                {
+                    System.out.println("Account-Number doesn't exist");
+                }
         }
         else if (type == '4') {
-        		System.out.print("Please enter your account");
-                accNum = sc.nextInt();
+        		System.out.print("Please enter your account : ");
+                while (true)
+                try {
+                accNum = Integer.parseInt(sc.nextLine());
+                break;
+                } catch (NumberFormatException nfe) {
+                System.out.print("Try again Mismatch input : ");
+                }
                 if (Savings.contains(accNum)) {
                 	int index=map.get(accNum);
                     SavingsAccount sIobj=(SavingsAccount)list.get(index);
                     sIobj.payInterest();
                 } else {
-                    System.out.print("Sorry This account isn't a [ Savings Account ]");
+                    System.out.print("Sorry This account isn't a [ Savings Account ] or "+"Account-Number doesn't exist");
                 }
         }
         else if (type == '5') {
         		System.out.print("Please enter a account number");
-                accNum = sc.nextInt()	;
+                while (true)
+                try {
+                accNum = Integer.parseInt(sc.nextLine());
+                break;
+                } catch (NumberFormatException nfe) {
+                System.out.print("Try again Mismatch input: ");
+                }
                 if (Savings.contains(accNum)) {
                     System.out.printf("\n" + "Transaction History for Account :%s", accNum);
                     int index=map.get(accNum);
@@ -140,6 +214,10 @@ public class BankSystem {
                     int index=map.get(accNum);
                     ChequingAccount cTobj=(ChequingAccount)list.get(index);
                     System.out.println(cTobj.transactions.toString());
+                }
+                else
+                {
+                    System.out.println("Account-Number doesn't exist");
                 }
         }
         else if (type == '0') {

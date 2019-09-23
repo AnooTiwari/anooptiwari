@@ -26,14 +26,14 @@ public class SavingsAccount extends Account {
         setBalance(balance);
 
         System.out.printf("Account Balance With Interest is %.2f", setBalance(balance));
-        Transaction t1 = new Transaction(new Date(),    'I'     ,        setBalance(balance), "Interest Paid");
+        Transaction t1 = new Transaction(new Date(),    'I'     ,        setBalance(balance ), "Interest Paid");
         transactions.add(t1);
 
     }    
     public void deposit(double total) {
         double balance;
         double accAmount = getBalance();
-        if(total>0){
+        if(total>1){
         balance= accAmount+=total;
         setBalance(balance);
         System.out.printf("Your deposit of :$" + total + " was successful your new account balance is :$%.2f",setBalance(balance));

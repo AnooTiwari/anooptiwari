@@ -20,7 +20,7 @@ public class ChequingAccount extends Account {
     public void deposit(double amount) {
         double accAmount = getBalance();
         double balance=0;
-        if(amount>0){
+        if(amount>1){
         balance=accAmount += amount;
         setBalance(balance);
         System.out.printf("Your deposit of :Rs " + amount + " was successful your new account balance is :Rs %.2f",setBalance(balance));

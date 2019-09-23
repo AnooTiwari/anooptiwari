@@ -39,15 +39,11 @@ public  class Account {
         return this.accNum;
     }
 
-    public boolean setBalance(double balance, char type){
-        if(type=='s'||type=='S'&& balance>499){
-        this.accBalance=balance;
-        return true;
-        }
-        else{
-        System.out.println("Minimum Account Opening balance 500/-");
-        return false;
-        }
+    public double setBalance(double balance){
+        if(balance>499)
+        return this.accBalance=balance;
+        else
+        return 0;    
     }
 
     public double getBalance(){
@@ -74,7 +70,7 @@ public  class Account {
     else
     System.out.print("Transaction Fail");
     Transaction t1 = new Transaction(new Date(), 'W', this.accBalance, "Withdrawal Made");
-    transactions.add(t1);/*Adding tranjection class object*/
+    transactions.add(t1);/*Adding transaction class object*/
 
     }
   
