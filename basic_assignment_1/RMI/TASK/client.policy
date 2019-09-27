@@ -1,0 +1,3 @@
+grant codeBase "file:/home/anoop_pass-secu1234_/AndroidStudioProjects/basic_assignment_1/RMI/TASK" {
+    permission java.security.AllPermission;
+};
