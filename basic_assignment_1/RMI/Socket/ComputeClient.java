@@ -16,14 +16,14 @@ public class ComputeClient implements Serializable
     { 
         CSMessage message =new CSMessage();
         try {
-            var serverPort = 1920;
+            // var serverPort = 1920; ??
+            int serverPort = 1920;
             s = new Socket("localhost",serverPort);
             ObjectInputStream in;
             ObjectOutputStream out ;
-            out =new ObjectOutputStream(s.getOutputStream() ); 
+            out =new ObjectOutputStream(s.getOutputStream()); 
             in =new ObjectInputStream(s.getInputStream());
             while (true) {
-               
                 System.out.println( "\n");
                 System.out.println("Calculate Pi  [1]");
                 System.out.println( "Exit         [4]");
@@ -35,13 +35,12 @@ public class ComputeClient implements Serializable
                 out.writeObject(x);
                 switch (x) 
                 {
-                    case ("1"):
-                        System.out.printf("Enter number of digits after the decimal point of pi: "  );
-                        
-                        Object obj1 = sc.nextInt();
-                        out.writeObject(obj1);
+                        case ("1"):
+                        System.out.printf("Enter number of digits after the decimal point of pi: ");
+                        Object limit = sc.nextInt();
+                        out.writeObject(limit);
                         iTask = ( Task) in.readObject();
-                        System.out .println("Value of pi with " +obj1 + " point precision is: " +iTask.getResult()); // displaying at DOS prompt
+                        System.out .println("Value of pi with " +limit + " point  is: " +iTask.getResult());
                         break;
                         case ("4"):
                         System.exit(0);
@@ -53,6 +52,6 @@ public class ComputeClient implements Serializable
                 }
             }
         }
-        catch (IOException e) {/*close failed*/ }
+        catch (IOException e) {}
     }
 }
