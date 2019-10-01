@@ -1,12 +1,12 @@
 package Server;
 import Server.Task;
 import java.io.Serializable;
+import static Server.CalculatePi.computePi;
 
 public class CalculateGCD implements Task,Serializable {
     private long a, b;
-    private String finalresult;
-
-
+    private String finalresult="Anoop";
+    
     public CalculateGCD(long num1,long num2) {
         a = num1;
         b = num2;
@@ -23,19 +23,18 @@ public class CalculateGCD implements Task,Serializable {
     // public void setB(long b) {
     //     this.b = b;
     // }
-
     public void executeTask() 
     {
-     finalresult = Long.toString(CalculateGCD(a, b));
-        // Long k;
-        // k=CalculateGCD(a,b);
+    finalresult = Long.toString(CalculateGCD(a, b));
     }
 
     public long CalculateGCD(long a,long b) 
     {
         if (a == 0) return b;
-        else {
-            while (b != 0) {
+        else 
+        {
+            while (b != 0) 
+            {
                 if (a > b) a = a -b;
                 else b = b - a;
             }

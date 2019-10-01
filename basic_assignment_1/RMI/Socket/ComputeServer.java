@@ -4,6 +4,7 @@
     import java.io.IOException;
     import java.io.ObjectInputStream;
     import java.net.Socket;
+    import Server.CalculateGCD;
     import java.io.Serializable;
     public class ComputeServer implements Serializable
     {
@@ -20,12 +21,12 @@
                     ServerSocket listenSocket = new ServerSocket(serverPort);
                     System.out.println("Server is ready for  client....!");
 
-                    while (true) {
+                     while (true) {
                         clientSocket =listenSocket.accept();
                         System.out.println("clientSocket  "+clientSocket);
                         System.out.println("Connection successful");
                         Connection c =new Connection(clientSocket);
-                    }
+                     }
                 } catch (IOException e)
                 {
                     System.out.println(" socket is Listening:" +e.getMessage());
@@ -53,19 +54,22 @@
             public void run() 
             {
             try 
-            {
-                
+            {   while(true){
                 iTask =(Task)in.readObject();
                 System.out.println("Performing a task for " +iTask.getClass().getName());
                 iTask.executeTask();
                 out.writeObject(iTask);
+                }
             }
             catch (EOFException e) 
             {
             System.out.println("EOF:" + e.getMessage());
             }
             catch (IOException e) { }
-            catch (ClassNotFoundException ex) {}
+            catch (ClassNotFoundException ex) {
+                String msg = new String("Upload the compute-task " +ex.getMessage().getClass() + " before calling the server!");
+                message.setMessage(msg);
+            }
             }
         }
     } 
