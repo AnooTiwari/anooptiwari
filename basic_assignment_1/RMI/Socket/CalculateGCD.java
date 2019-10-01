@@ -1,13 +1,12 @@
 package Server;
 import Server.Task;
-import static Server.CalculatePi.computePi;
 import java.io.Serializable;
 
 public class CalculateGCD implements Task,Serializable {
     private long a, b;
     private String finalresult;
 
-    //assign user inputs to instance variables
+
     public CalculateGCD(long num1,long num2) {
         a = num1;
         b = num2;
@@ -25,10 +24,11 @@ public class CalculateGCD implements Task,Serializable {
     //     this.b = b;
     // }
 
-    //method execute task
     public void executeTask() 
     {
-    finalresult = Long.toString(CalculateGCD(a, b));
+     finalresult = Long.toString(CalculateGCD(a, b));
+        // Long k;
+        // k=CalculateGCD(a,b);
     }
 
     public long CalculateGCD(long a,long b) 
@@ -42,7 +42,6 @@ public class CalculateGCD implements Task,Serializable {
             return a;
         }
     }
-    // return the final result
     public Object getResult() {
         return finalresult;
     }

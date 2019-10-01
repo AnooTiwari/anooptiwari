@@ -5,7 +5,7 @@ public class CSMessage implements Task,Serializable {
     String result;
     public CSMessage() {}
     public Object getResult() {
-        return result;
+    return result;
     }    
     public void executeTask() {}
 }

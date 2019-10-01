@@ -28,11 +28,11 @@ public class CalculatePi implements Task,Serializable {
         return pi.setScale(digits,BigDecimal.ROUND_HALF_UP);
     }
     
-    public static BigDecimal arctan(int inverseX, int scale)
+    public static BigDecimal arctan(int value, int scale)
      {
         BigDecimal result, numer,term;
-        BigDecimal invX = BigDecimal.valueOf(inverseX);
-        BigDecimal invX2 =BigDecimal.valueOf(inverseX * inverseX);
+        BigDecimal invX = BigDecimal.valueOf(value);
+        BigDecimal invX2 =BigDecimal.valueOf(value * value);
         numer = BigDecimal.ONE.divide(invX, scale,roundingMode);
         result = numer;
         int i = 1;
@@ -48,5 +48,5 @@ public class CalculatePi implements Task,Serializable {
             i++;
         } while (term.compareTo(BigDecimal.ZERO) !=0);
         return result;
-    } //method aretan ends
-} //class Pi ends
+    } 
+} 
